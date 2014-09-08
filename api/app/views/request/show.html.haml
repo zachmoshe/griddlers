@@ -1,0 +1,69 @@
+!!!
+
+.container-fluid
+  .row
+    -# Board
+    .col-xs-4
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title
+            Initial board
+        .panel-body
+          = render 'common/board', board: @bpr.board, size: 'small'
+          = "#{@bpr.board.shape[0]} x #{@bpr.board.shape[1]}"
+
+    -# Parameters
+    .col-xs-4
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title
+            Parameters
+        %ul.list-group
+          - params = { id: @bpr.id }
+          - params[:submitted_at] = @bpr.submitted_at.to_s(:db) if @bpr.submitted?
+          - params[:started_at] = @bpr.started_at.to_s(:db) if @bpr.started?
+          - params[:completed_at] = @bpr.completed_at.to_s(:db) if @bpr.completed?
+          - params.merge!(@bpr.request_params || {})
+          - params.each do |f,v|
+            %li.list-group-item
+              %span
+                = f.to_s.humanize
+              %span.pull-right
+                = v
+
+    -# Strategy
+    .col-xs-4
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title
+            Strategy
+        %ul.list-group
+          - @bpr.strategy.each do |f,v|
+            %li.list-group-item
+              %span
+                = f.to_s.humanize
+              %span.pull-right
+                = v
+
+  -if @bpr.completed?
+    .row
+      .col-xs-12
+
+        - if @bpr.failed?
+          - result_panel_class = 'panel-danger'
+          - result_partial = 'bpr_failed'
+        - elsif @bpr.partially_succeeded?
+          - result_panel_class = 'panel-info'
+          - result_partial = 'bpr_iterations'
+        - else
+          - result_panel_class = 'panel-success'
+          - result_partial= 'bpr_iterations'
+
+        .panel{ class: result_panel_class }
+          .panel-heading
+            %h3.panel-title
+              = @bpr.status.to_s.humanize
+          .panel-body
+            = render result_partial, bpr: @bpr
+
+

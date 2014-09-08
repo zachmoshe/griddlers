@@ -1,0 +1,15 @@
+.container-fluid
+
+  - @all_boards.each_slice(3) do |row_boards|
+    .row
+      - row_boards.each do |board|
+        .col-xs-4
+          .panel.panel-primary
+            .panel-body
+              %iframe.pull-left{ src: board[:grid_svg] }
+
+              = form_tag request_index_path, mathod: :post, target: '_blank' do
+                = hidden_field_tag "board", board[:board].dump
+                = text_field_tag "strategy", '{"name": "naive-probs"}'
+                = text_field_tag "request_params", '{}'
+                = submit_tag "Send"

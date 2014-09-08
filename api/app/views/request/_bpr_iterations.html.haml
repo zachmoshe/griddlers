@@ -1,0 +1,21 @@
+- bpr.result['iterations'].each do |iter|
+  .panel.panel-primary.iteration-panel
+    .panel-heading
+      %h3.panel-title
+        = "Iteration ##{iter['iteration_number']}"
+    .panel-body
+      .container-fluid
+        .row
+          .col-xs-12
+            %div{ 'class' => ('completed-board' if iter['stats']['pct_certain'] == 1)}
+              = render 'common/board', board: Board.load(iter['board'])
+        .row
+          .col-xs-12
+            - pct = (100*iter['stats']['pct_certain']).round(2)
+            - progress_class = (pct<25 and 'progress-bar-danger') ||
+            -   (pct<50 and 'progress-bar-warning') ||
+            -   (pct<85 and 'progress-bar-info') || 'progress-bar-success'
+            .progress
+              .progress-bar{ 'class' => progress_class, 'role' => 'progressbar', 'aria-valuenow' => 100*iter['stats']['pct_certain'], 'aria-valuemin' => 0, 'aria-valuemax' => 100, 'style' => "width: #{100*iter['stats']['pct_certain']}%;" }
+                = "#{pct}%"
+

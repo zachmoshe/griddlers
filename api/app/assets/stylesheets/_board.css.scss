@@ -1,0 +1,22 @@
+.board {
+  border: 1px solid black;
+}
+
+.board-line {
+}
+
+.board-cell {
+  border: 1px solid black;
+  width: 12px;
+  height: 12px;
+}
+
+.board-small .board-cell {
+  width: 8px;
+  height: 8px;
+}
+
+.board-tiny .board-cell {
+  width: 4px;
+  height: 4px;
+}

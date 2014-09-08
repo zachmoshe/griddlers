@@ -1,0 +1,8 @@
+- board_class = "board-#{size}" if local_assigns.has_key? :size else nil
+
+%table.board.center
+  - board.matrix.each do |line|
+    %tr.board-line{ class: board_class}
+      - line.each do |cell|
+        %td.board-cell{ style: "background-color: rgba(0,0,0,#{cell})"}
+
