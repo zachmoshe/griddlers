@@ -6,7 +6,6 @@ class ProbsStrategy(object):
 
 	def __init__(self, board, params={}):
 		self.board = board
-
 		self.all_perms = perms_utils.precalculate_all_perms(self.board)
 
 
@@ -17,7 +16,6 @@ class ProbsStrategy(object):
 		for idx, col in enumerate(self.board.columns()):
 			self.board.matrix[:,idx] = self.calc_probs( col, self.board.constraints.columns[idx] ) 
 
-		return
 
 	def calc_probs(self, curr_probs, seqs):
 		l = len(curr_probs)
