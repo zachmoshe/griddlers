@@ -8,7 +8,7 @@ import os
 
 def run_solver(board, strategy_params, request_params):
 	path = "{}/..".format(os.path.dirname(__file__))
-	proc = Popen([ "{}/env/bin/python".format(path) , "{}/bin/board_solver.py" ], stdin=PIPE, stdout=PIPE, stderr=PIPE)
+	proc = Popen([ "{}/env/bin/python".format(path) , "{}/bin/board_solver.py".format(path) ], stdin=PIPE, stdout=PIPE, stderr=PIPE)
 	input_str = "{}\n{}\n{}".format( json.dumps(strategy_params), json.dumps(request_params), json.dumps(board.serialize()))
 	if sys.version_info[0] == 3:
 		input_str = bytes(input_str, 'UTF-8')
