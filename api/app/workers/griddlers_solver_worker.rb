@@ -9,7 +9,7 @@ class GriddlersSolverWorker
     bpr.update_attributes! started_at: Time.now
 
     core_path = "#{Rails.root}/../core"
-    status = Open4::popen4("#{core_path}/env/bin/python #{core_path}/bin/board_solver.py") do |pid, stdin, stdout, stderr|
+    status = Open4::popen4("ulimit -v 350000 && #{core_path}/env/bin/python #{core_path}/bin/board_solver.py") do |pid, stdin, stdout, stderr|
       logger.info "Starting board_solver.py for request #{bpr.id} [PID=#{pid}]"
 
       stdin.puts(JSON.dump bpr.strategy)
