@@ -11,6 +11,32 @@
   height: 12px;
 }
 
+.board-consts-cell {
+  background-color: lightyellow;
+  font-size: 8px;
+  border: 1px solid black;
+}
+
+.board-row-consts-cell {
+  @extend .board-consts-cell;
+  vertical-align: center;
+}
+
+.board-column-consts-cell {
+  @extend .board-consts-cell;
+  vertical-align: bottom;
+  text-align: center;
+}
+
+.row-consts-cell {
+  float: right;
+  margin-left: 5px;
+}
+
+.column-consts-cell {
+  vertical-align: bottom;
+}
+
 .board-small .board-cell {
   width: 8px;
   height: 8px;

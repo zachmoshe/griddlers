@@ -8,7 +8,7 @@
         .row
           .col-xs-12
             %div{ 'class' => ('completed-board' if iter['stats']['pct_certain'] == 1)}
-              = render 'common/board', board: Board.load(iter['board'])
+              = render 'common/board', board: Board.load(iter['board']), show_constraints: true
         .row
           .col-xs-12
             - pct = (100*iter['stats']['pct_certain']).round(2)

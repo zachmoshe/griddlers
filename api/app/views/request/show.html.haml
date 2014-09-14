@@ -9,7 +9,7 @@
           %h3.panel-title
             Initial board
         .panel-body
-          = render 'common/board', board: @bpr.board, size: 'small'
+          = render 'common/board', board: @bpr.board, size: 'small', show_constraints: true
           = "#{@bpr.board.shape[0]} x #{@bpr.board.shape[1]}"
 
     -# Parameters
