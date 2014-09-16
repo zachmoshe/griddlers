@@ -1,6 +1,7 @@
 require 'sidekiq/api'
 
 class RequestController < ApplicationController
+  protect_from_forgery :except => :create
 
   respond_to :json, :html
 
@@ -12,9 +13,8 @@ class RequestController < ApplicationController
   end
 
   def create
-    board = Board.load(params[:board])
-    strategy = JSON.load(params[:strategy])
-    request_params = JSON.load(params[:request_params])
+    board, strategy, request_params = create_params
+    board = Board.load(board)
 
     bpr = BoardProcessingRequest.new board: board, strategy: strategy, request_params: request_params
     bpr.save!
@@ -24,4 +24,18 @@ class RequestController < ApplicationController
   end
 
   protected
+  def create_params
+    board = params.require(:board)
+    # Enable those checks again when I have a GUI that generates proper JSON params. With the current poor HTML forms it's hard to do that dynamically
+    #board.require(:matrix)
+    #board.require(:constraints)
+    #board[:constraints].require(:rows)
+    #board[:constraints].require(:columns)
+
+    strategy = params.require(:strategy)
+    request_params = params[:request_params] || {}
+
+    [board, strategy, request_params]
+  end
+
 end
