@@ -26,23 +26,43 @@
   @extend .board-consts-cell;
   vertical-align: bottom;
   text-align: center;
+  overflow: hidden;
 }
 
 .row-consts-cell {
   float: right;
   margin-left: 5px;
+  height: 12px;
 }
 
 .column-consts-cell {
   vertical-align: bottom;
+  width: 12px;
 }
 
-.board-small .board-cell {
-  width: 8px;
-  height: 8px;
+.board-small {
+  .board-cell {
+    width: 8px;
+    height: 8px;
+  }
+  .row-consts-cell {
+    height: 8px;
+  }
+  .column-consts-cell {
+    width: 8px;
+  }
 }
 
-.board-tiny .board-cell {
-  width: 4px;
-  height: 4px;
+
+.board-tiny {
+  .board-cell {
+    width: 4px;
+    height: 4px;
+  }
+  .row-consts-cell {
+    height: 4px;
+  }
+  .column-consts-cell {
+    width: 4px;
+  }
 }
