@@ -6,7 +6,7 @@ class NaiveStrategy(object):
 
 	def __init__(self, board, params={}):
 		self.board = board
-		self.all_perms = perms_utils.precalculate_all_perms(self.board)
+		#self.all_perms = perms_utils.precalculate_all_perms(self.board)
 
 		
 	def advance(self):
@@ -24,9 +24,10 @@ class NaiveStrategy(object):
 		p_black = np.array( [True] * l )
 		p_white = np.array( [True] * l )
 
-		possible_perms = self.all_perms[(l, str(seqs))]
+		#possible_perms = self.all_perms[(l, str(seqs))]
+		possible_perms = perms_utils.all_perms_gen(l,seqs)
 
-		if len(possible_perms) == 0:
+		if l-sum(seqs)-len(seqs)+1 < 0:
 			return np.zeros(l)
 
 		for perm in possible_perms:

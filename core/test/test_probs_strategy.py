@@ -22,7 +22,7 @@ class TestProbsStrategy:
 		assert np.all(b.matrix == [[1,0,0], [1,1,0], [1,1,1]])
 		assert b.is_completed() == True
 		assert b.is_legal() == True
-
+		
 	def test_simple_board_3(self):
 		b = griddlers.Board(3,3,[[2],[1],[1]], [[1],[1],[1,1]])
 		st = griddlers.strategies.ProbsStrategy(b)
