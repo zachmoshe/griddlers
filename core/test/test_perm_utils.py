@@ -1,19 +1,20 @@
 import pytest
-from griddlers.strategies.perms_utils import all_perms
+from griddlers.strategies.perms_utils import all_perms, all_perms_gen
 import numpy as np
 
 def assert_perms(l, seqs, expected):
-	actual = list(map(list, all_perms(l, seqs)))
-	actual.sort()
-	expected.sort()
-	assert actual == expected
-
+	for method in [all_perms, all_perms_gen]:
+		actual = list(map(list, method(l, seqs)))
+		actual.sort()
+		expected.sort()
+		assert actual == expected
 
 def test_impossible_too_small():
 	assert_perms(3, [4], [])
 	assert_perms(3, [1,2], [])
-	assert all_perms(3, [4]) == []
-	assert all_perms(3, [1,2]) == []
+	#assert all_perms(3, [4]) == []
+	#assert all_perms(3, [1,2]) == []
+
 
 def test_exactly_one_solution():
 	assert_perms(1, [1], [ [1] ])

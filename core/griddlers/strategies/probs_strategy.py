@@ -6,7 +6,7 @@ class ProbsStrategy(object):
 
 	def __init__(self, board, params={}):
 		self.board = board
-		self.all_perms = perms_utils.precalculate_all_perms(self.board)
+		#self.all_perms = perms_utils.precalculate_all_perms(self.board)
 
 
 	def advance(self):
@@ -21,15 +21,16 @@ class ProbsStrategy(object):
 		l = len(curr_probs)
 		cnts = np.zeros(l)
 
-		possible_perms = self.all_perms[(l, str(seqs))]
+		#possible_perms = self.all_perms[(l, str(seqs))]
+		possible_perms = perms_utils.all_perms_gen(l,seqs)
 
-		if len(possible_perms) == 0:
+		if l-sum(seqs)-len(seqs)+1 < 0:
 			return cnts
 
 		for perm in possible_perms:
 			# check if perm is legal
-			if any(  (  (perm==0) & (curr_probs==1) )  |  
-				      (   (perm==1) & (curr_probs==0) ) ):
+			if any( ( (perm==0) & (curr_probs==1) )  |  
+				      ( (perm==1) & (curr_probs==0) ) ):
 				continue
 			total_curr_probs = sum(curr_probs[ perm == 1 ])
 
