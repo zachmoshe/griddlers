@@ -3,7 +3,12 @@ require 'sidekiq/api'
 class RequestController < ApplicationController
   protect_from_forgery :except => :create
 
-  respond_to :json, :html
+  respond_to :json, except: [:index]
+  respond_to :html
+
+  def index
+    @latest_5 = BoardProcessingRequest.where(status: ['success', 'partially-success']).order(:completed_at).reverse_order.limit(5)
+  end
 
 
   def show

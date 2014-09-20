@@ -21,6 +21,7 @@ class GriddlersSolverWorker
       error = stderr.read.strip
 
       bpr.result = JSON.load(result)
+      bpr.status = bpr.result["status"] rescue nil
 
       unless error.empty?
         # stderr has the full error

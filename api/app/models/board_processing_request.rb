@@ -9,19 +9,15 @@ class BoardProcessingRequest < ActiveRecord::Base
   validate :datetimes_make_sense
 
   def succeeded?
-    result && result['status'] == 'success'
+    status == 'success'
   end
 
   def partially_succeeded?
-    result && result['status'] == 'partial_success'
+    status == 'partial_success'
   end
 
   def failed?
-    result && result['status'] == 'error'
-  end
-
-  def status
-    result && result['status']
+    status == 'error'
   end
 
   def completed?
