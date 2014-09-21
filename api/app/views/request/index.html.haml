@@ -4,7 +4,7 @@
   .h1 Griddlers Ninja!
   Logo coming soon...
   %br
-  .h3 The latest, freshly baked Griddlers, from our oven:
+  .h3 The latest, freshly baked Griddlers, right from our oven:
 
   - @latest_5.each do |bpr|
     .panel.panel-primary
@@ -14,9 +14,9 @@
 
       .panel-body
         .row
-          .col-xs-6
+          .col-xs-3
             = render 'common/board', board: Board.load(bpr.result["iterations"][-1]["board"]), size: "tiny"
-          .col-xs-6
+          .col-xs-9
             %strong Status:
             = bpr.status.humanize
             %br
