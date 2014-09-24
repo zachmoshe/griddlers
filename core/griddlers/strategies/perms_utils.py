@@ -43,8 +43,7 @@ def all_perms(l, seqs):
 			perms += [ curr_perm ]
 
 	#add to cache and return
-	# REMOVED for time-memory tradeoff. Time difference is small (5%-10%) and memory is a huge problem on the micro machines
-	#ALL_PERMS_MEMOIZE[cache_key] = perms
+	ALL_PERMS_MEMOIZE[cache_key] = perms
 	return perms
 
 
