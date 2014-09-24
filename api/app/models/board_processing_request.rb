@@ -17,7 +17,7 @@ class BoardProcessingRequest < ActiveRecord::Base
   end
 
   def failed?
-    status == 'error'
+    ['error', 'fatal_error'].include? status
   end
 
   def completed?
