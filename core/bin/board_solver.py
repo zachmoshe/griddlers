@@ -35,7 +35,7 @@ except Exception as ex:
 	err = { 'status': 'error', 'message': str(ex) }
 	print(json.dumps(err))
 	sys.stderr.write(str(ex))
-	exit(1)
+	exit(250)
 
 
 
