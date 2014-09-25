@@ -13,5 +13,8 @@
               = form_tag request_index_path(format: :json), method: :post, target: '_blank' do
                 = hidden_field_tag "board", board[:empty_board].dump
                 = text_field_tag "strategy[name]", 'naive-probs'
+                = check_box_tag "strategy[speedy]"
+                Use Speedy?
+                %hr
                 = submit_tag "Send"
 
