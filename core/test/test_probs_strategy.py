@@ -2,6 +2,8 @@ import pytest
 import test_utils
 import griddlers 
 import numpy as np
+from griddlers.strategies import ImpossibleBoardException
+
 
 class TestProbsStrategy:
 
@@ -39,7 +41,7 @@ class TestProbsStrategy:
 
 
 
-	def test_impossible_board(self):
+	def test_board_without_enough_information(self):
 		b = griddlers.Board(3,3,[[1],[1],[2]], [[1],[2],[1]])
 		st = griddlers.strategies.ProbsStrategy(b)
 
@@ -55,7 +57,7 @@ class TestProbsStrategy:
 			assert b.is_legal() == True
 
 
-	def test_impossible_board_2(self):
+	def test_board_without_enough_information_2(self):
 		b = griddlers.Board(3,3,[[1],[1],[1]], [[1],[2],[]])
 		st = griddlers.strategies.ProbsStrategy(b)
 
@@ -69,3 +71,15 @@ class TestProbsStrategy:
 			assert test_utils.float_equals(b.matrix, [[0.5,0.5,0],[0,1,0],[0.5,0.5,0]])
 			assert b.is_completed() == False
 			assert b.is_legal() == True
+
+	def test_impossible_board(self):
+		b = test_utils.build_board([ "1**", "11*", "***"], [[1], [2], [1]], [[1],[2],[3]])
+		st = griddlers.strategies.NaiveStrategy(b)
+
+		with pytest.raises(ImpossibleBoardException):
+			st.advance()
+
+
+
+
+

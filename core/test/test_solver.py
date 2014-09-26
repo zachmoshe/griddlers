@@ -62,24 +62,28 @@ class TestSolver(object):
 		assert str(ex.value) == 'given board is illegal'
 
 	def test_stops_if_illegal_board_while_running(self):
-		always_illegal_Board = copy.deepcopy(griddlers.Board)
-		always_illegal_Board.first_time = True
-		def illegal_from_second_time(self):
-			if self.first_time:
-				self.first_time = False
-				return True
-			else:
-				return False
-		always_illegal_Board.is_legal = illegal_from_second_time
-
-		b = always_illegal_Board(4, 4, [ [3], [1,1], [2], [1] ], [ [2], [1], [3], [2] ] )
+		class AlwaysIllegalBoard(griddlers.Board):
+			first_time = True
+			def is_legal(self):
+				if self.first_time:
+					self.first_time = False
+					return True
+				else:
+					return False
+		
+		b = AlwaysIllegalBoard(4, 4, [ [3], [1,1], [2], [1] ], [ [2], [1], [3], [2] ] )
 		
 		s = griddlers.Solver(griddlers.strategies.NaiveStrategy)
 		with pytest.raises(ValueError) as ex:
 			res = s.solve(b)
 		assert 'strategy failure. illegal board' in str(ex.value)
 
-
-
+	def test_stops_if_impossible_board(self):
+		b = griddlers.Board(3,3, [[3],[3],[3]], [[],[],[]])
+		assert b.is_legal() == True
+		s = griddlers.Solver(griddlers.strategies.NaiveStrategy)
+		res = s.solve(b)
+		assert res['status'] == 'partially-success'
+		assert len(res["iterations"]) == 0
 
 

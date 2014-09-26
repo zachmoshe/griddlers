@@ -15,7 +15,6 @@ class BoardConstraints(object):
 class Board(object):
 
 	def __init__(self, n_rows, n_columns, rows_constraints, columns_constraints):
-		
 		if n_rows > 0 and n_columns > 0:
 			self.matrix = np.empty((n_rows, n_columns))
 			self.matrix.fill(1.0/(n_rows*n_columns))

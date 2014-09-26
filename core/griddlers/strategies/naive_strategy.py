@@ -1,4 +1,4 @@
-from . import perms_utils
+from . import perms_utils, ImpossibleBoardException
 import numpy as np
 
 
@@ -36,13 +36,18 @@ class NaiveStrategy(object):
 		if l-sum(seqs)-len(seqs)+1 < 0:
 			return np.zeros(l)
 
+		had_legal_perm = False
 		for perm in possible_perms:
 			# check if perm is legal
 			if any(  (  (perm==0) & (curr_probs==1) )  |  
 				      (   (perm==1) & (curr_probs==0) ) ):
 				continue
+			had_legal_perm = True
 			p_white &= perm==0 
 			p_black &= perm==1
+
+		if not had_legal_perm:
+			raise ImpossibleBoardException()
 
 		curr_probs[ p_black ] = 1
 		curr_probs[ p_white ] = 0
