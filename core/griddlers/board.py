@@ -65,6 +65,12 @@ class Board(object):
 	def shape(self):
 		return self.matrix.shape
 
+	def num_rows(self):
+		return self.shape()[0]
+
+	def num_columns(self):
+		return self.shape()[1]
+
 	def num_cells(self):
 		return self.shape()[0] * self.shape()[1]
 
@@ -79,6 +85,7 @@ class Board(object):
 			max_possible_certain = min_possible_certain + sum(np.bitwise_and(cells>0, cells<1))
 
 			if sum_constraint<min_possible_certain or sum_constraint>max_possible_certain:
+				#print("not legal because of cells - {}     and constraints - {}".format(cells, constraint))
 				return False
 
 		return True

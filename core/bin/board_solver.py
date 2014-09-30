@@ -9,6 +9,7 @@ import json
 STRATEGIES = { 
 	'naive': griddlers.strategies.NaiveStrategy,
 	'naive-probs': griddlers.strategies.ProbsStrategy,
+	'naive-probs-guesser': griddlers.strategies.ProbsGuesserStrategy,
 }
 
 try:
