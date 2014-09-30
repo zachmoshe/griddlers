@@ -3,7 +3,7 @@ import copy
 import numpy as np
 import time 
 import sys
-
+from griddlers.strategies import ImpossibleBoardException
 
 SOLVER_DEFAULT_PARAMS = { 
 	"max-iters": 100,
@@ -33,7 +33,10 @@ class Solver(object):
 			
 			board_before = copy.deepcopy(board)
 			time_before = time.time()
-			strategy.advance()
+			try:
+				strategy.advance()
+			except ImpossibleBoardException:
+				break  # exit the "while keep_running" loop
 
 			time_elapsed = time.time() - time_before
 
@@ -65,7 +68,7 @@ class Solver(object):
 			 ]
 				
 		obj = { 
-			'status': (board.is_completed() and 'success') or 'partially-success',
+			'status': (board.is_completed() and board.is_legal() and 'success') or 'partially-success',
 			'iterations': iterations,
 			'stats': {},
 		}

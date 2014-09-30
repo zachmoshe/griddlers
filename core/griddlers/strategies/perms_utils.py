@@ -4,62 +4,57 @@ import itertools
 ALL_PERMS_MEMOIZE = {}
 
 def all_perms(l, seqs):
-	#seqs = list(seqs)
+  # check cache
+  cache_key = str( (l,seqs) )
+  if cache_key in ALL_PERMS_MEMOIZE:
+    return ALL_PERMS_MEMOIZE[cache_key]
 
-	# check cache
-	cache_key = str( (l,seqs) )
-	if cache_key in ALL_PERMS_MEMOIZE:
-		return ALL_PERMS_MEMOIZE[cache_key]
+  # handle end cases
+  len_seqs = len(seqs)
+  sum_seqs = sum(seqs)
 
-	# handle end cases
-	len_seqs = len(seqs)
-	sum_seqs = sum(seqs)
-	if len_seqs<=0 or l<=0: 
-		return []
+  if l<=0: return []
+  if len_seqs == 0: return [np.zeros(l, dtype="int")]
+  if sum_seqs + len_seqs - 1 > l: return [] #not enough space
 
-	if sum_seqs + len_seqs - 1 > l:
-		#not enough space
-		return []
+  perms = []
 
-	perms = []
+  # iterate possible start indexes for the first block
+  first, seqs = seqs[0], seqs[1:]
+  max_index_for_first = l - first 
 
-	# iterate possible start indexes for the first block
-	first, seqs = seqs[0], seqs[1:]
-	max_index_for_first = l - first 
+  for i in range( max_index_for_first + 1):
+    curr_perm = np.zeros(l, dtype="int")
+    curr_perm[i : i+first] = 1
 
-	for i in range( max_index_for_first + 1):
-		curr_perm = np.zeros(l, dtype="int")
-		curr_perm[i : i+first] = 1
+    if len(seqs) > 0:
+      remaining_length = l - i - first - 1
+      remaining_perms = all_perms(remaining_length, seqs)
 
-		if len(seqs) > 0:
-			remaining_length = l - i - first - 1
-			remaining_perms = all_perms(remaining_length, seqs)
+      for p in remaining_perms:
+        new_perm = np.array(curr_perm)
+        new_perm[-remaining_length : ] = p
+        perms += [ new_perm ] 
+    else:
+      perms += [ curr_perm ]
 
-			for p in remaining_perms:
-				new_perm = np.array(curr_perm)
-				new_perm[-remaining_length : ] = p
-				perms += [ new_perm ] 
-		else:
-			perms += [ curr_perm ]
-
-	#add to cache and return
-	# REMOVED for time-memory tradeoff. Time difference is small (5%-10%) and memory is a huge problem on the micro machines
-	#ALL_PERMS_MEMOIZE[cache_key] = perms
-	return perms
+  #add to cache and return
+  ALL_PERMS_MEMOIZE[cache_key] = perms
+  return perms
 
 
 def precalculate_all_perms(board):
-	# pre calcualte all perms
-	perms_output = {}
-	for idx, row in enumerate(board.rows()):
-		all_perms_key = (len(row), str(board.constraints.rows[idx]))
-		if all_perms_key not in perms_output:
-			perms_output[all_perms_key] = all_perms(len(row), board.constraints.rows[idx])
-	for idx, col in enumerate(board.columns()):
-		all_perms_key = (len(col), str(board.constraints.columns[idx]))
-		if all_perms_key not in perms_output:
-			perms_output[all_perms_key] = all_perms(len(col), board.constraints.columns[idx])
-	return perms_output
+  # pre calcualte all perms
+  perms_output = {}
+  for idx, row in enumerate(board.rows()):
+    all_perms_key = (len(row), str(board.constraints.rows[idx]))
+    if all_perms_key not in perms_output:
+      perms_output[all_perms_key] = all_perms(len(row), board.constraints.rows[idx])
+  for idx, col in enumerate(board.columns()):
+    all_perms_key = (len(col), str(board.constraints.columns[idx]))
+    if all_perms_key not in perms_output:
+      perms_output[all_perms_key] = all_perms(len(col), board.constraints.columns[idx])
+  return perms_output
 
 
 
@@ -68,9 +63,12 @@ def all_perms_gen(l, seqs):
   num_boxes = len(seqs)+1
 
   if num_free_whites < 0:
-  	return []
+    return
+  if l<=0:
+    return
   if len(seqs) == 0:
-  	return np.zeros(l)
+    yield np.zeros(l)
+    return
 
   whites_must_haves = np.ones(num_boxes)
   whites_must_haves[0] = 0
@@ -84,7 +82,7 @@ def all_perms_gen(l, seqs):
 
   zeros = {}
   for i in range(l-sum(seqs)+1):
-  	zeros[i] = np.zeros(i)
+    zeros[i] = np.zeros(i)
 
   for white_perm in all_possible_white_perms:
     whites = whites_must_haves + white_perm

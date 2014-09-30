@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819063137) do
+ActiveRecord::Schema.define(version: 20140920093840) do
 
   create_table "board_processing_requests", force: true do |t|
     t.text     "board"
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(version: 20140819063137) do
     t.datetime "started_at"
     t.datetime "completed_at"
     t.string   "sidekiq_jid"
+    t.string   "status"
   end
+
+  add_index "board_processing_requests", ["completed_at"], name: "index_board_processing_requests_on_completed_at"
+  add_index "board_processing_requests", ["status"], name: "index_board_processing_requests_on_status"
 
 end

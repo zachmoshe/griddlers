@@ -5,6 +5,8 @@ import os
 sys.path.append("{}/..".format(os.path.dirname(__file__)))
 import griddlers
 import json 
+import traceback
+
 
 STRATEGIES = { 
 	'naive': griddlers.strategies.NaiveStrategy,
@@ -32,11 +34,15 @@ try:
 	print(json.dumps(res))
 	exit(0)
 
+except MemoryError as ex:
+	sys.stderr.write("Memory Error {}".format(str(ex)))
+	exit(1)
+
 except Exception as ex:
 	err = { 'status': 'error', 'message': str(ex) }
 	print(json.dumps(err))
-	sys.stderr.write(str(ex))
-	exit(1)
+	sys.stderr.write(traceback.format_exc())
+	exit(250)
 
 
 

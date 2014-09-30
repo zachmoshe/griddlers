@@ -1,0 +1,42 @@
+!!!
+
+.jumbotron
+  .h1 Griddlers Ninja!
+  Logo coming soon...
+  %br
+  .h3 The latest, freshly baked Griddlers, right from our oven:
+
+  - @latest_5.each do |bpr|
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title
+          = link_to("Board ##{bpr.id}", request_path(bpr, format: :html))
+
+      .panel-body
+        .row
+          .col-xs-3
+            = render 'common/board', board: Board.load(bpr.result["iterations"][-1]["board"]), size: "tiny"
+          .col-xs-9
+            %strong Status:
+            = bpr.status.humanize
+            %br
+            %strong Submitted at:
+            = time_ago_in_words bpr.submitted_at
+            ago
+            %br
+            %strong Waited in queue for:
+            = distance_of_time_in_words bpr.submitted_at, bpr.started_at
+            %br
+            %strong Calculation took:
+            = distance_of_time_in_words bpr.started_at, bpr.completed_at
+
+  .h2 Want to send some more?
+  .h3
+    = link_to("Parsed Griddlers from lancs.ac.uk", archive_1_path)
+  Original website -
+  = link_to("http://www.comp.lancs.ac.uk/~ss/nonogram/", "http://www.comp.lancs.ac.uk/~ss/nonogram/")
+
+  .h3
+    = link_to("Griddlers from jsimlo.sk", archive_2_path)
+  Original Website -
+  = link_to("http://jsimlo.sk/griddlers/", "http://jsimlo.sk/griddlers/ ")

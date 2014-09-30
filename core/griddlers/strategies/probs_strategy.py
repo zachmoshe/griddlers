@@ -6,7 +6,10 @@ class ProbsStrategy(object):
 
 	def __init__(self, board, params={}):
 		self.board = board
-		#self.all_perms = perms_utils.precalculate_all_perms(self.board)
+		self.params = params
+
+		if self.params.get('speedy'):
+			self.all_perms = perms_utils.precalculate_all_perms(self.board)
 
 
 	def advance(self):
@@ -21,8 +24,10 @@ class ProbsStrategy(object):
 		l = len(curr_probs)
 		cnts = np.zeros(l)
 
-		#possible_perms = self.all_perms[(l, str(seqs))]
-		possible_perms = perms_utils.all_perms_gen(l,seqs)
+		if self.params.get('speedy'):
+			possible_perms = self.all_perms[(l, str(seqs))]
+		else: 
+			possible_perms = perms_utils.all_perms_gen(l,seqs)
 
 		if l-sum(seqs)-len(seqs)+1 < 0:
 			return cnts
