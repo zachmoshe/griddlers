@@ -1,0 +1,64 @@
+!!!
+
+.jumbotron
+  .h2 If you really insist - type your board manually
+
+  %p
+    First type the rows constraints, left to right (delimited by spaces and every row in its own line), then,
+    type the columns constraints, top to bottom (same syntax). Then hit 'send', but if you couldn't guess that -
+    that's probably not the site for you...
+
+  %p{ style: "font-size: 1em; color: red" }
+    Notice that an empty row is considered as a row with no black sequences. Beware of 'enters' at the end of the last line..
+
+
+  %hr
+
+  = form_tag request_index_path(format: :json), id: 'new-form', method: :post, target: '_blank' do
+    = hidden_field_tag "strategy[name]", "naive-probs"
+
+    Rows constraints:
+    %br
+    = text_area_tag "rows", nil, cols: 50, rows: 15, placeholder:"1\n1 2 1\n2 2 5 1\n..."
+    %br
+    Columns constraints:
+    %br
+    = text_area_tag "cols", nil, cols: 50, rows: 15, placeholder:"1 1 2 3\n1 1\n4 1 1\n..."
+    %br
+    %input{ name: 'commit', type: 'submit', value: 'Send' }
+
+
+:javascript
+  function parse_constraints(cons_str) {
+    cons = cons_str.split("\n")
+    return cons.map( function(con_str) {
+      return con_str.trim().split(" ").filter(Boolean).map( function(str) {return parseInt(str) })
+    })
+  }
+
+
+  $('#new-form').submit( function() {
+    try {
+      rows = this.elements["rows"]
+      cols = this.elements["cols"]
+      rows_str = rows.value
+      cols_str = cols.value
+      rows_parsed = parse_constraints(rows_str)
+      cols_parsed = parse_constraints(cols_str)
+
+
+      board = { "matrix": [], "constraints": {"rows": rows_parsed, "columns": cols_parsed } }
+
+      var el = document.createElement("input");
+      el.type = "hidden";
+      el.name = "board";
+      el.value = JSON.stringify(board);
+
+      this.appendChild(el);
+
+    } catch(err) {
+      console.error(err)
+      return false
+    }
+
+  });

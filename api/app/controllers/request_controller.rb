@@ -28,6 +28,9 @@ class RequestController < ApplicationController
     redirect_to request_path(bpr, format: :html)
   end
 
+  def new
+  end
+
   protected
   def create_params
     board = params.require(:board)
