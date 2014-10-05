@@ -25,6 +25,9 @@
     %br
     = text_area_tag "cols", nil, cols: 50, rows: 15, placeholder:"1 1 2 3\n1 1\n4 1 1\n..."
     %br
+    = check_box_tag "strategy[speedy]"
+    Use Speedy?
+    %br
     %input{ name: 'commit', type: 'submit', value: 'Send' }
 
 
