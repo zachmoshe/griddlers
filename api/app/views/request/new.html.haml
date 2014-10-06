@@ -14,7 +14,7 @@
 
   %hr
 
-  = form_tag request_index_path(format: :json), id: 'new-form', method: :post, target: '_blank' do
+  = form_tag request_index_path(format: :json), id: 'new-form', method: :post, target: '_blank', onsubmit: 'trackFormSubmit()' do
     = hidden_field_tag "strategy[name]", "naive-probs"
 
     Rows constraints:
@@ -32,6 +32,10 @@
 
 
 :javascript
+  function trackFormSubmit() {
+    ga('send', 'event', 'BoardRequests', 'submit', 'manually-inserted')
+  }
+
   function parse_constraints(cons_str) {
     cons = cons_str.split("\n")
     return cons.map( function(con_str) {
