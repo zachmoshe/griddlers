@@ -51,4 +51,5 @@ gem 'sidekiq'
 gem 'sinatra'
 gem 'open4'
 gem 'nokogiri'
+gem "twitter-bootstrap-rails"
 
