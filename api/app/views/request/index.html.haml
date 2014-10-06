@@ -7,7 +7,7 @@
   .h3 The latest, freshly baked Griddlers, right from our oven:
 
   - @latest_5.each do |bpr|
-    .panel.panel-primary
+    .panel.panel-primary{ style: 'cursor: pointer', onclick: "window.open('#{request_path(bpr, format: :html)}')" }
       .panel-heading
         %h3.panel-title
           = link_to("Board ##{bpr.id}", request_path(bpr, format: :html))
@@ -40,3 +40,7 @@
     = link_to("Griddlers from jsimlo.sk", archive_2_path)
   Original Website -
   = link_to("http://jsimlo.sk/griddlers/", "http://jsimlo.sk/griddlers/ ")
+
+  .h2 Want to manually type your own boards?
+  .h3
+    =link_to("For crazy guys only...", new_request_path)

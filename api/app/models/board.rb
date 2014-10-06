@@ -2,11 +2,20 @@ class Board
   include ActiveModel::Model
   include ActiveModel::Validations
 
+  extend ActiveModel::Callbacks
+  define_model_callbacks :initialize, only: :after
+  after_initialize :allow_empty_matrix
+
   validate :matrix_and_constraints_sizes_match
   validate :matrix_values_between_0_1
 
   attr_accessor :matrix, :rows_constraints, :columns_constraints
 
+
+  def initialize(attributes={})
+    super(attributes)
+    run_callbacks :initialize
+  end
 
 
   def shape
@@ -18,6 +27,7 @@ class Board
     out.matrix = self.class.two_dim_matrix(*shape)
     out
   end
+
 
   def self.load json
     if json.is_a? String
@@ -47,7 +57,18 @@ class Board
     self.class.dump self
   end
 
+
   protected
+
+  def allow_empty_matrix
+    unless matrix and not matrix.empty?
+      num_rows = rows_constraints.size
+      num_cols =  columns_constraints.size
+      uniform_dist = 1.0 / (num_rows*num_cols)
+      self.matrix = self.class.two_dim_matrix(num_rows, num_cols)
+    end
+  end
+
 
   def self.two_dim_matrix(rows, cols)
     Array.new(rows) { Array.new(cols) { 1.0/(rows*cols)} }
