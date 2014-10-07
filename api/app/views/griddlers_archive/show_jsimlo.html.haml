@@ -1,3 +1,8 @@
+:javascript
+  function trackFormSubmit() {
+    ga('send', 'event', 'BoardRequests', 'submit', 'preparsed-jsimlo')
+  }
+
 - cache do
   .container-fluid
     - @all_boards.each_slice(4) do |row_boards|
@@ -10,7 +15,7 @@
                 %br
                 = "#{board[:full_board].shape[0]} x #{board[:full_board].shape[1]}"
 
-                = form_tag request_index_path(format: :json), method: :post, target: '_blank' do
+                = form_tag request_index_path(format: :json), method: :post, target: '_blank', onsubmit: 'trackFormSubmit()' do
                   = hidden_field_tag "board", board[:empty_board].dump
                   = text_field_tag "strategy[name]", 'naive-probs'
                   = check_box_tag "strategy[speedy]"

@@ -1,0 +1,5 @@
+production:
+  tracking_code: UA-54835912-1
+
+development:
+  tracking_code: UA-54835912-2

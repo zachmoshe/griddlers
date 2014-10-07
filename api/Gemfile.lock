@@ -50,6 +50,7 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.2.1)
+    google-analytics-turbolinks (0.0.4)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -171,6 +172,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   coffee-rails (~> 4.0.0)
+  google-analytics-turbolinks
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
