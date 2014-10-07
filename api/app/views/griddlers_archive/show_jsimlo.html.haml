@@ -1,20 +1,20 @@
-.container-fluid
+- cache do
+  .container-fluid
+    - @all_boards.each_slice(4) do |row_boards|
+      .row
+        - row_boards.each do |board|
+          .col-xs-3
+            .panel.panel-primary
+              .panel-body
+                = render 'common/board', board: board[:full_board], size: 'tiny'
+                %br
+                = "#{board[:full_board].shape[0]} x #{board[:full_board].shape[1]}"
 
-  - @all_boards.each_slice(4) do |row_boards|
-    .row
-      - row_boards.each do |board|
-        .col-xs-3
-          .panel.panel-primary
-            .panel-body
-              = render 'common/board', board: board[:full_board], size: 'tiny'
-              %br
-              = "#{board[:full_board].shape[0]} x #{board[:full_board].shape[1]}"
-
-              = form_tag request_index_path(format: :json), method: :post, target: '_blank' do
-                = hidden_field_tag "board", board[:empty_board].dump
-                = text_field_tag "strategy[name]", 'naive-probs'
-                = check_box_tag "strategy[speedy]"
-                Use Speedy?
-                %hr
-                = submit_tag "Send"
+                = form_tag request_index_path(format: :json), method: :post, target: '_blank' do
+                  = hidden_field_tag "board", board[:empty_board].dump
+                  = text_field_tag "strategy[name]", 'naive-probs'
+                  = check_box_tag "strategy[speedy]"
+                  Use Speedy?
+                  %hr
+                  = submit_tag "Send"
 

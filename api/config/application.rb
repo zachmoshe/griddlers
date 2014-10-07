@@ -21,5 +21,10 @@ module Api
     # config.i18n.default_locale = :de
 
     config.autoload_paths << Rails.root.join("app/workers", "app/parsers")
+
+
+    config.action_controller.perform_caching = true
+    config.cache_store = :memory_store
+
   end
 end

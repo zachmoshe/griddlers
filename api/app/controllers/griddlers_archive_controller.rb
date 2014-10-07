@@ -16,22 +16,24 @@ class GriddlersArchiveController < ApplicationController
       Rails.cache.write LANCS_AC_UK_CACHE_KEY, all_boards
     end
     @all_boards = Rails.cache.read LANCS_AC_UK_CACHE_KEY
-
   end
 
 
   JSIMLO_ARCHIVE_DIR = "#{Rails.root.to_s}/public/griddlers_archive/jsimlo.sk"
-
+  JSIMLO_CACHE_KEY = :jsimlo_griddlers_archive
   def show_jsimlo
-    @all_boards = Dir.glob("#{JSIMLO_ARCHIVE_DIR}/*.sgriddler").map do |filename|
-      full_board = JsimloParser.new.parse(filename)
-      empty_board = full_board.empty
-      {
-        full_board: full_board,
-        empty_board: empty_board
-      }
+    unless Rails.cache.read(JSIMLO_CACHE_KEY)
+      all_boards = Dir.glob("#{JSIMLO_ARCHIVE_DIR}/*.sgriddler").map do |filename|
+        full_board = JsimloParser.new.parse(filename)
+        empty_board = full_board.empty
+        {
+            full_board: full_board,
+            empty_board: empty_board
+        }
+      end
+      Rails.cache.write JSIMLO_CACHE_KEY, all_boards
     end
-
+    @all_boards = Rails.cache.read JSIMLO_CACHE_KEY
   end
 
 
