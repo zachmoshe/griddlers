@@ -8,11 +8,8 @@ import json
 import traceback
 
 
-STRATEGIES = { 
-	'naive': griddlers.strategies.NaiveStrategy,
-	'naive-probs': griddlers.strategies.ProbsStrategy,
-	'naive-probs-guesser': griddlers.strategies.ProbsGuesserStrategy,
-}
+
+config = griddlers.GriddlersConfig()
 
 try:
 	strategy_params = json.loads(sys.stdin.readline())
@@ -23,12 +20,17 @@ try:
 	# build strategy
 	if not strategy_params['name']:
 		raise Exception("Can't find 'name' in strategy")
-	if not strategy_params['name'] in STRATEGIES:
+	if not strategy_params['name'] in config.strategies_names:
 		raise Exception("Unknown strategy {}".format(strategy_params['name']))
-	strategy = STRATEGIES[strategy_params['name']]
+	strategy_class = eval("griddlers.strategies.{}".format(config.get_strategy(strategy_params['name'])['python_class']))
+	strategy_allowed_params = [ p['name'] for p in config.get_strategy(strategy_params['name'])['params'] ]
 	strategy_params.pop("name")
 
-	solver = griddlers.Solver(strategy, strategy_params, request_params)
+	illegal_params = [ p for p in strategy_params if p not in strategy_allowed_params ]
+	if illegal_params:
+		raise ValueError("illegal params - {}".format(", ".join(illegal_params)))
+
+	solver = griddlers.Solver(strategy_class, strategy_params, request_params)
 	res = solver.solve(board)
 
 	print(json.dumps(res))

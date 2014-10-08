@@ -1,0 +1,14 @@
+strategies: 
+  naive:
+    default:
+      python_class: NaiveStrategy
+      params: 
+        - name: speedy
+          type: boolean
+
+    probs:
+      python_class: ProbsStrategy
+      params:
+        - name: speedy
+          type: boolean
+
