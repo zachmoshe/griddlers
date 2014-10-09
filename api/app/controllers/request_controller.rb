@@ -29,6 +29,7 @@ class RequestController < ApplicationController
   end
 
   def new
+    @strategies = Rails.application.config.griddlers[:strategies]
   end
 
   protected

@@ -5,10 +5,12 @@ strategies:
       params: 
         - name: speedy
           type: boolean
+          default: true
 
     probs:
       python_class: ProbsStrategy
       params:
         - name: speedy
           type: boolean
+          default: true
 

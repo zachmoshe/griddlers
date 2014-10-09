@@ -18,8 +18,8 @@ try:
 	board = griddlers.Board.deserialize(board_obj)
 
 	# build strategy
-	if not strategy_params['name']:
-		raise Exception("Can't find 'name' in strategy")
+	if not strategy_params.get('name'):
+		raise Exception("Can't find 'name' in strategy paramters")
 	if not strategy_params['name'] in config.strategies_names:
 		raise Exception("Unknown strategy {}".format(strategy_params['name']))
 	strategy_class = eval("griddlers.strategies.{}".format(config.get_strategy(strategy_params['name'])['python_class']))
