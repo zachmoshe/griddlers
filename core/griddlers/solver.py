@@ -41,7 +41,7 @@ class Solver(object):
 			time_elapsed = time.time() - time_before
 
 			if not board.is_legal():
-				raise ValueError("strategy failure. illegal board\n%s" % board)
+				raise ValueError("strategy failure. illegal board")
 
 			# calculating some stats
 			board_diff = board.matrix - board_before.matrix
