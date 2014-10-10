@@ -24,5 +24,5 @@
 
 
     %hr
-    = form_tag request_index_path(format: :json), method: :post, role: :form, target: '_blank', onsubmit: "trackFormSubmit('#{board_origin}'); return generateBoardSubmitForm(this, '#{type}'); " do
+    = form_tag request_index_path(format: :json), method: :post, role: :form, onsubmit: "trackFormSubmit('#{board_origin}'); return generateBoardSubmitForm(this, '#{type}'); " do
       = submit_tag "Submit", class: 'btn btn-primary'

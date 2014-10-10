@@ -8,7 +8,7 @@
   .row.with-top-margin
     - bpr_row.each do |bpr|
       .col-xs-6
-        .panel.latest-solved-board-panel.panel-primary{ style: 'cursor: pointer', onclick: "window.open('#{request_path(bpr, format: :html)}')" }
+        .panel.latest-solved-board-panel.panel-primary{ style: 'cursor: pointer', onclick: "window.open('#{request_path(bpr, format: :html)}', '_self')" }
           .panel-heading
             %h3.panel-title
               = link_to("Board ##{bpr.id}", request_path(bpr, format: :html))
