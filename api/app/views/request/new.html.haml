@@ -1,26 +1,20 @@
 !!!
+%p
+  First type the rows constraints, left to right (delimited by spaces and every row in its own line), then,
+  type the columns constraints, top to bottom (same syntax). Then hit 'send', but if you couldn't guess that -
+  that's probably not the site for you...
 
-.jumbotron
-  .h2 If you really insist - type your board manually
-
-  %p
-    First type the rows constraints, left to right (delimited by spaces and every row in its own line), then,
-    type the columns constraints, top to bottom (same syntax). Then hit 'send', but if you couldn't guess that -
-    that's probably not the site for you...
-
-  %p{ style: "font-size: 1em; color: red" }
-    Notice that an empty row is considered as a row with no black sequences. Beware of 'enters' at the end of the last line..
+%p{ style: "font-size: 1em; color: red" }
+  Notice that an empty row is considered as a row with no black sequences. Beware of 'enters' at the end of the last line..
 
 
-  %hr
+.row.with-top-margin
+  .col-xs-4
+    = render 'common/board_submit_form', board_origin: 'manually-typed', type: 'manual'
 
-  .row
-    .col-xs-4
-      = render 'common/board_submit_form', board_origin: 'manually-typed', type: 'manual'
+  .col-xs-4
+    = text_area_tag "rows", nil, id: 'rows-constraints-textarea', style: 'width: 100%;', rows: 25, placeholder:"Rows Constraints (left to right):\n\n1\n1 2 1\n2 2 5 1\n..."
 
-    .col-xs-4
-      = text_area_tag "rows", nil, id: 'rows-constraints-textarea', style: 'width: 100%;', rows: 25, placeholder:"Rows Constraints (left to right):\n\n1\n1 2 1\n2 2 5 1\n..."
-
-    .col-xs-4
-      = text_area_tag "cols", nil, id: 'cols-constraints-textarea', style: 'width: 100%;', rows: 25, placeholder:"Columns Constraints (top to bottom):\n\n1 1 2 3\n1 1\n4 1 1\n..."
+  .col-xs-4
+    = text_area_tag "cols", nil, id: 'cols-constraints-textarea', style: 'width: 100%;', rows: 25, placeholder:"Columns Constraints (top to bottom):\n\n1 1 2 3\n1 1\n4 1 1\n..."
 

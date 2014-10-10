@@ -7,7 +7,7 @@ class RequestController < ApplicationController
   respond_to :html
 
   def index
-    @latest_5 = BoardProcessingRequest.where(status: ['success', 'partially-success']).order(:completed_at).reverse_order.limit(5)
+    @latest = BoardProcessingRequest.where(status: ['success', 'partially-success']).order(:completed_at).reverse_order.limit(10)
   end
 
 
