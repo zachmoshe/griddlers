@@ -32,7 +32,7 @@ class GriddlersSolverWorker
     else
       # handle fatal errors (where we couldn't even run the solver script in a similar way to "regular" errors)
       error_message = error.split(/[:\n]/).last.strip
-      bpr.result = { 'status' => 'fatal_error', 'message' => error_message }
+      bpr.result = { 'status' => 'fatal-error', 'message' => error_message }
     end
 
     bpr.status = bpr.result['status'] rescue nil

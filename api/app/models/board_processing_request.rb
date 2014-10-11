@@ -13,11 +13,11 @@ class BoardProcessingRequest < ActiveRecord::Base
   end
 
   def partially_succeeded?
-    status == 'partial_success'
+    status == 'partial-success'
   end
 
   def failed?
-    ['error', 'fatal_error'].include? status
+    ['error', 'fatal-error'].include? status
   end
 
   def completed?

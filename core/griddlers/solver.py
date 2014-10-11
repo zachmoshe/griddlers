@@ -68,7 +68,7 @@ class Solver(object):
 			 ]
 				
 		obj = { 
-			'status': (board.is_completed() and board.is_legal() and 'success') or 'partially-success',
+			'status': (board.is_completed() and board.is_legal() and 'success') or 'partial-success',
 			'iterations': iterations,
 			'stats': {},
 		}
