@@ -5,3 +5,11 @@
 .latest-solved-board-panel:hover {
   background-color: lightblue;
 }
+
+.status-alert {
+  text-align: center;
+  font-size: 2em;
+  i {
+    margin-right: 20px;
+  }
+}
