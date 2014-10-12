@@ -14,7 +14,7 @@ parse_constraints = (cons_str) ->
     board_value = ""
     if type=='preparsed'
       if not $('.board-panel.chosen-board').length
-        alert('Choose a board first')
+        alert 'Choose a board first'
         return false
 
       board_value = $(".board-panel.chosen-board").attr 'board_str'
@@ -24,6 +24,9 @@ parse_constraints = (cons_str) ->
       cols = $('#cols-constraints-textarea')
       rows_str = rows.val()
       cols_str = cols.val()
+      if rows_str=="" or cols_str==""
+        alert 'both constraints are mandatory'
+        return false
       rows_parsed = parse_constraints(rows_str)
       cols_parsed = parse_constraints(cols_str)
 
