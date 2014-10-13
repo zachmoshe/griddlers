@@ -1,0 +1,7 @@
+- cache(board.hash) do
+  .col-xs-2
+    .panel.panel-info.board-panel{ onclick: 'boardChosen($(this), $(".board-panel"))', board_str: board[:empty_board].dump}
+      .panel-body
+        = render 'common/board', board: board[:full_board], size: 'tiny'
+        %br
+        = "#{board[:full_board].shape[0]} x #{board[:full_board].shape[1]}"

@@ -6,6 +6,7 @@ class Board
   define_model_callbacks :initialize, only: :after
   after_initialize :allow_empty_matrix
 
+  validates_presence_of :rows_constraints, :columns_constraints
   validate :matrix_and_constraints_sizes_match
   validate :matrix_values_between_0_1
 
@@ -13,6 +14,7 @@ class Board
 
 
   def initialize(attributes={})
+    raise ArgumentError, "can't initialize a board without constraints" unless attributes[:rows_constraints] and attributes[:columns_constraints]
     super(attributes)
     run_callbacks :initialize
   end
@@ -27,7 +29,6 @@ class Board
     out.matrix = self.class.two_dim_matrix(*shape)
     out
   end
-
 
   def self.load json
     if json.is_a? String
@@ -56,6 +57,8 @@ class Board
   def dump
     self.class.dump self
   end
+
+
 
 
   protected

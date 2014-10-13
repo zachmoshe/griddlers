@@ -11,7 +11,7 @@
         %td.board-column-consts-cell
           - if tooltips
             - tooltip_text = cons.join("<br/>")
-            %span.const-tooltip.glyphicon.glyphicon-chevron-down{ 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => tooltip_text }
+            %span.const-tooltip.fa.fa-chevron-down{ 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => tooltip_text }
           - else
             - cons.each do |num|
               %div.column-consts-cell
@@ -23,7 +23,7 @@
         %td.board-row-consts-cell
           - if tooltips
             - tooltip_text = board.rows_constraints[i].join(" ")
-            %span.const-tooltip.glyphicon.glyphicon-chevron-right{ 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => tooltip_text }
+            %span.const-tooltip.fa.fa-chevron-right{ 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => tooltip_text }
           - else
             - board.rows_constraints[i].reverse.each do |num|
               %span.row-consts-cell

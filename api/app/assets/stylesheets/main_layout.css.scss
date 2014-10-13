@@ -1,0 +1,45 @@
+body {
+  padding-bottom: 70px;
+}
+
+.with-top-margin{
+  margin-top: 40px;
+}
+
+.bottom-navbar-cell {
+
+  i {
+    float: left;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+.bottom-navbar {
+  border-top: 10px solid darkgray;
+  padding: 10px 20px 10px 20px;
+}
+
+.bottom-navbar-text-cell {
+  color: #2871B4;
+}
+
+
+.header-row {
+  border-bottom: 10px solid darkgray;
+
+  .jumbotron {
+    margin-bottom: 0px;
+    background-color: lightgray;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+.header-home-link:hover {
+  text-decoration: none;
+}
+
+.main-content-row {
+  padding: 30px;
+}

@@ -1,0 +1,53 @@
+!!!
+
+%html
+  %head
+    %title Griddlers Ninja
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+    = favicon_link_tag 'favicon.ico?v=1', type: 'image/x-icon'
+
+    = render "layouts/google_analytics"
+
+  %body
+    .container-fluid
+      .row.header-row
+        .jumbotron
+          .h1
+            =link_to "Griddlers Ninja!", root_path, class: "header-home-link"
+          Logo coming soon...
+
+      .row.jumbotron
+        = yield
+
+      %nav.navbar.bottom-navbar.navbar-default.navbar-fixed-bottom{ role: :navigation }
+        .row
+          .col-xs-3
+            .bottom-navbar-cell.bottom-navbar-text-cell
+              %i.fa.pull-right.fa-hand-o-right.fa-5x
+              .h3 Want to submit your own boards?
+          .col-xs-3
+            .bottom-navbar-cell
+              = link_to(archive_1_path, class: "btn btn-primary btn-lg btn-block navbar-btn") do
+                %i.fa.fa-folder
+                Submit Griddlers from lancs.ac.uk
+              Original website:
+              = link_to("http://www.comp.lancs.ac.uk/~ss/nonogram/", "http://www.comp.lancs.ac.uk/~ss/nonogram/")
+          .col-xs-3
+            .bottom-navbar-cell
+              = link_to(archive_2_path, class: "btn btn-primary btn-lg btn-block navbar-btn") do
+                %i.fa.fa-folder
+                Submit Griddlers from jsimlo.sk
+              Original Website:
+              = link_to("http://jsimlo.sk/griddlers/", "http://jsimlo.sk/griddlers/ ")
+          .col-xs-3
+            .bottom-navbar-cell
+              =link_to(new_request_path, class: "btn btn-primary btn-lg btn-block navbar-btn") do
+                %i.fa.fa-pencil
+                Manually type your own board
+
+
+
