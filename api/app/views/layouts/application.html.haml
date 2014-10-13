@@ -4,7 +4,8 @@
   %head
     %title Griddlers Ninja
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Handlee', media: 'all', type: 'text/css'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
@@ -16,10 +17,27 @@
     .container-fluid
       .row.header-row
         .jumbotron
+          .face-and-social.pull-right
+            .header-social-icons
+              = link_to 'http://stackoverflow.com/users/1643257/zach-moshe', target: '_blank' do
+                %i.fa.fa-2x.fa-stack-overflow
+              = mail_to 'zachmoshe@gmail.com' do
+                %i.fa.fa-2x.fa-envelope
+            .header-social-icons
+              = link_to 'http://www.facebook.com/zach.moshe', target: '_blank' do
+                %i.fa.fa-2x.fa-facebook
+              = link_to 'http://www.linkedin.com/profile/view?id=8617275', target: '_blank' do
+                %i.fa.fa-2x.fa-linkedin
+              = link_to 'http://github.com/zachmoshe', target: '_blank' do
+                %i.fa.fa-2x.fa-github
+            .header-face-image
+              = image_tag('zachmoshe-face.png', height: 100, width: 100)
+              .pull-right
+                Zach Moshe
+
           .h1
             =link_to "Griddlers Ninja!", root_path, class: "header-home-link"
           Logo coming soon...
-
       .row.jumbotron
         = yield
 

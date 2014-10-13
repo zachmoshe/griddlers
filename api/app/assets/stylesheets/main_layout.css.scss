@@ -43,3 +43,39 @@ body {
 .main-content-row {
   padding: 30px;
 }
+
+.face-and-social{
+  .header-social-icons, .header-face-image {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .header-face-image {
+    font-family: Handlee;
+    font-size: 20px;
+  }
+
+  img {
+    margin: 0px 0px 3px auto;
+    display: block;
+   }
+
+  .header-social-icons {
+    padding-top: 5px;
+    margin-left: 7px;
+
+    i {
+      margin-bottom: 2px;
+      display: block;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+
+    i.fa-facebook{ color: #3b5998}
+    i.fa-linkedin{ color: #007BB6}
+    i.fa-github{ color: black }
+    i.fa-stack-overflow{ color: #fe7a15 }
+    i.fa-envelope{ color: darkslategray }
+  }
+}
