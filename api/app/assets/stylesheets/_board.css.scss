@@ -1,6 +1,7 @@
 .board {
   border: 1px solid black;
   table-layout: fixed;
+  margin: auto;
 }
 
 .board-line {
@@ -21,6 +22,7 @@
 .board-row-consts-cell {
   @extend .board-consts-cell;
   vertical-align: center;
+  padding-right: 3px;
 }
 
 .board-column-consts-cell {

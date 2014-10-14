@@ -1,0 +1,62 @@
+- title "Will you help me?"
+
+.row
+  .col-xs-12
+    .h1.text-center Will you help me?
+
+.row.content-row
+  .col-xs-12
+    %p.big
+      'Griddlers-Ninja' is a (beta) website that automatically solves
+      = link_to 'Griddlers', 'http://www.wikiwand.com/en/Nonogram'
+      puzzles.
+      There is no commercial intention behind it, I'm doing it as a fun real-life application for
+      = link_to 'Constraint Satisfaction Problems.', 'http://www.wikiwand.com/en/Constraint_satisfaction_problem'
+      *
+    %p.big
+      In order to compare the various algorithms vs. bright human minds like yours, I need to collect some statistics
+      on the time it takes humans to solve several representative boards.
+    %hr
+    %p.big
+      Below are several boards. In case you (like me) find it fun to solve these puzzles,
+      can you also write down the time it took you?
+      For your convenience, the boards are printable PDFs.
+      %br
+      Needless to say - please be honest and solve it manually. Also - don't cheat on your time, it's really meaningless..
+.row
+  .col-xs-12
+    .h2.text-center Thanks!
+
+.row.with-top-margin
+  .col-xs-12
+    %span
+      *
+      The link to the Wikipedia articles is using
+      = link_to 'WikiWand', 'http://www.wikiwand.com'
+      \- a great new look for Wikipedia. Give it a try too.
+
+.row.with-top-margin
+  .col-xs-3.col-xs-offset-1
+    - @boards.each do |b|
+      .row
+        .cols-xs-12
+          .helpme-board-id.pull-right
+            = link_to "http://boards.griddlers.ninja/griddlers-ninja-#{b[:id]}.pdf", class: 'btn btn-lg btn-primary big' do
+              %span ##{b[:id]}
+              - rows,cols = b[:board].shape
+              %span{ style: 'font-size: 0.7em;' } (#{rows}x#{cols})
+              %i.fa.fa-file-pdf-o
+
+
+
+  .col-xs-6{ style: 'height: 100%' }
+    %iframe{ src: "https://docs.google.com/forms/d/124-Nn8KB11aa9A3j6X2MwZgcs1n4phlLPnPYG7xA2uM/viewform?embedded=true", height: '100%', width: '100%', frameborder: "0" }
+      Loading...
+
+:css
+  .bottom-navbar {
+    display: none;
+  }
+  body {
+    padding-bottom: 0px;
+  }
