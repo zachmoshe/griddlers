@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+  get 'willyouhelpme' => 'static_pages#measure_human_time'
+
   root to: redirect("request")
 
   resources :request, only: [:index, :new], defaults: {format: :html}
