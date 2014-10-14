@@ -1,6 +1,13 @@
 .board {
   border: 1px solid black;
   table-layout: fixed;
+
+  tr:nth-child(5n+1).grid-boxes {
+    border-bottom: 2px solid;
+  }
+  td:nth-child(5n+1).grid-boxes {
+    border-right: 2px solid;
+  }
 }
 
 .board-line {
@@ -21,6 +28,7 @@
 .board-row-consts-cell {
   @extend .board-consts-cell;
   vertical-align: center;
+  border-right: 2px solid;
 }
 
 .board-column-consts-cell {
@@ -28,6 +36,7 @@
   vertical-align: bottom;
   text-align: center;
   overflow: hidden;
+  border-bottom: 2px solid;
 }
 
 .row-consts-cell {
