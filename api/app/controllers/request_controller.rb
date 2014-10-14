@@ -21,6 +21,13 @@ class RequestController < ApplicationController
     board, strategy, request_params = create_params
     board = Board.load(board)
 
+    unless (cookies['BOARDS_SUBMIT_SECRET'] and cookies['BOARDS_SUBMIT_SECRET']==ENV['BOARDS_SUBMIT_SECRET']) or
+           board.shape.select{ |n| n > 35 }.empty?
+      flash[:alert] = 'Girddlers Ninja is currently in beta stage. Boards bigger than 35x35 are not allowed.'
+      redirect_to :back
+      return
+    end
+
     bpr = BoardProcessingRequest.new board: board, strategy: strategy, request_params: request_params
     bpr.save!
     bpr.submit!

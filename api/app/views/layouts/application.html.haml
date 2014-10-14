@@ -37,8 +37,18 @@
 
           .h1
             =link_to "Griddlers Ninja!", root_path, class: "header-home-link"
+            %span.small (beta)
           Logo coming soon...
+
       .row.jumbotron
+        - unless flash.empty?
+          - flash.keys.each do |fk|
+            .row.alert-row
+              .col-xs-12
+                - alert_class = (fk=='alert') ? 'alert-danger' : 'alert-info'
+                .alert{ class: alert_class }
+                  = flash[fk]
+
         = yield
 
       %nav.navbar.bottom-navbar.navbar-default.navbar-fixed-bottom{ role: :navigation }
