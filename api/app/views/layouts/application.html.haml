@@ -14,6 +14,13 @@
 
     = render "layouts/google_analytics"
 
+    %meta{ property: 'og:title', content: (content_for('og:title') || 'Griddlers Ninja') }
+    %meta{ property: 'og:type', content: (content_for('og:type') || 'article') }
+    %meta{ property: 'og:image', content: (content_for('og:image') || asset_url('griddlers-board-logo.png')) }
+    %meta{ property: 'og:url', content: (content_for('og:url') || url_for(only_path: false, format: :html)) }
+    %meta{ property: 'og:description', content: (content_for('og:description') || 'Griddlers Ninja is a website that automatically solves Griddlers puzzles') }
+
+
   %body
     .container-fluid
       .row.header-row
@@ -37,9 +44,10 @@
                 Zach Moshe
 
           .h1
+            = image_tag 'griddlers-board-logo.png', height: "70", width: "70", style: 'vertical-align: bottom;'
             =link_to "Griddlers Ninja!", root_path, class: "header-home-link"
             %span.small (beta)
-          Logo coming soon...
+
 
       .row.jumbotron
         - unless flash.empty?
@@ -80,3 +88,4 @@
 
 
 
+    -# Social links
