@@ -1,6 +1,7 @@
 - size = if local_assigns.has_key?(:size) then size else nil end
 - board_class = if size then "board-#{size}" else nil end
 - show_constraints = if local_assigns.has_key?(:show_constraints) then show_constraints else nil end
+- show_gridboxes = if local_assigns.has_key?(:show_gridboxes) then show_gridboxes else nil end
 - tooltips = true if ["tiny", "small"].include? size
 
 %table.board.center
@@ -17,8 +18,9 @@
               %div.column-consts-cell
                 = num
 
+  - grid_boxes_class = if show_gridboxes then "grid-boxes" else nil end
   - board.matrix.each_with_index do |line, i|
-    %tr.board-line{ class: board_class }
+    %tr.board-line{ class: [board_class, grid_boxes_class] }
       - if show_constraints
         %td.board-row-consts-cell
           - if tooltips
@@ -30,7 +32,7 @@
                 = num
 
       - line.each do |cell|
-        %td.board-cell{ style: "background-color: rgba(0,0,0,#{cell})" }
+        %td.board-cell{ class: grid_boxes_class, style: "background-color: rgba(0,0,0,#{cell})" }
 
 
 :javascript

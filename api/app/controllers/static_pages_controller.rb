@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
-  def measure_human_time
-    @boards = [
+
+  def boards
+    [
       {
           id: 1,
           board: lancs_board(23).empty
@@ -21,18 +22,20 @@ class StaticPagesController < ApplicationController
           id: 5,
           board: jsimlo_board("eagle").empty
       },
-      # {
-      #     id: 6,
-      #     board: jsimlo_board("hurdler").empty
-      # },
     ]
+  end
+
+  def measure_human_time
+    @boards = boards
+  end
+
+  def board_pdf
+    @board = boards[params[:id].to_i-1]
   end
 
 
 
-
   protected
-
   def jsimlo_board(board_name)
     JsimloParser.new.parse Rails.root.join('public', 'griddlers_archive', 'jsimlo.sk', "#{board_name}.sgriddler")
   end

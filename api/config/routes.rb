@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   get 'willyouhelpme' => 'static_pages#measure_human_time'
 
+  # Here just for manual uses (on development machine)
+  #get 'board_pdf/:id' => 'static_pages#board_pdf'
+
   root to: redirect("request")
 
   resources :request, only: [:index, :new], defaults: {format: :html}
