@@ -2,6 +2,10 @@
   ga "send", "event", "BoardRequests", "submit", label
   return
 
+@trackHelpMeBoardDownload = (board_id) ->
+  ga "send", "event", "WillYouHelpMe", "download_board", board_id
+  return
+
 parse_constraints = (cons_str) ->
   cons = cons_str.split('\n')
   return cons.map (con_str) ->

@@ -48,7 +48,8 @@
       .row
         .cols-xs-12
           .helpme-board-id.pull-right
-            = link_to "http://boards.griddlers.ninja/griddlers-ninja-#{b[:id]}.pdf", class: 'btn btn-lg btn-primary big' do
+            = link_to "http://boards.griddlers.ninja/griddlers-ninja-#{b[:id]}.pdf", class: 'btn btn-lg btn-primary big',
+                      onclick: "trackHelpMeBoardDownload('#{b[:id]}')" do
               %span ##{b[:id]}
               - rows,cols = b[:board].shape
               %span{ style: 'font-size: 0.7em;' } (#{rows}x#{cols})
