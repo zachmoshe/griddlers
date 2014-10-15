@@ -6,6 +6,11 @@
   ga "send", "event", "WillYouHelpMe", "download_board", board_id
   return
 
+@trackSocialInteraction = (site) ->
+  ga "send", "event", "SocialContactInteraction", "click_link", site
+  return
+
+
 parse_constraints = (cons_str) ->
   cons = cons_str.split('\n')
   return cons.map (con_str) ->
