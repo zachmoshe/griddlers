@@ -1,0 +1,24 @@
+.row
+  .col-xs-12
+    %p.big.text-center
+      Thanks for helping! Don't forget to report your time at
+      %span{ style: 'color: blue'}
+        http://griddlers.ninja/willyouhelpme
+
+.row
+  .col-xs-1
+    %h1.big
+      = "##{@board[:id]}"
+  .col-xs-11
+    = render 'common/board', board: @board[:board], show_constraints: true, show_gridboxes: true
+
+:css
+  .bottom-navbar {
+    display: none;
+  }
+  .header-row {
+    display: none;
+  }
+  body {
+    padding-bottom: 0px;
+  }
