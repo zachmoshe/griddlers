@@ -15,7 +15,7 @@
     = render "layouts/google_analytics"
 
     %meta{ property: 'og.title', content: (content_for('og.title') || 'Griddlers Ninja') }
-    %meta{ property: 'og.type', content: (content_for('og.type') || 'website') }
+    %meta{ property: 'og.type', content: (content_for('og.type') || 'article') }
     %meta{ property: 'og.image', content: (content_for('og.image') || asset_url('griddlers-board-logo.png')) }
     %meta{ property: 'og.url', content: (content_for('og.url') || url_for(only_path: false, format: :html)) }
     %meta{ property: 'og.description', content: (content_for('og.description') || 'Griddlers Ninja is a website that automatically solves Griddlers puzzles') }
