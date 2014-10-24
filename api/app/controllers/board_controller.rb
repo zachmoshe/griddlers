@@ -2,11 +2,17 @@ class BoardController < ApplicationController
 
 
   def show
-    @board = boards[params[:id].to_i-1]
+    id_i = params[:id].to_i rescue not_found
+    @board = boards[id_i-1]
+    not_found unless @board
   end
 
 
   protected
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
   def boards
     [
         {
@@ -28,10 +34,6 @@ class BoardController < ApplicationController
         {
             id: 5,
             board: jsimlo_board("eagle").empty
-        },
-        {
-            id: 6,
-            board: Board.new( rows_constraints: [[2,1],[2],[2],[1,1],[2,1]], columns_constraints: [[1,2],[2,1],[2],[3],[1]] )
         },
     ]
   end

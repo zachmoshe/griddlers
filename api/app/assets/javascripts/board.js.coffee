@@ -143,7 +143,7 @@ boardDone = ->
   clientId = 'unknown_cliend_id'
   ga (tracker) ->
     clientId = tracker.get 'clientId'
-  if window.location.hostname.match('localhost$').length > 0
+  if window.location.hostname.match('griddlers.ninja').length > 0
     $.post('https://docs.google.com/forms/d/124-Nn8KB11aa9A3j6X2MwZgcs1n4phlLPnPYG7xA2uM/formResponse', {"entry.1214389103": 'Board #'+@board_id.toString(), "entry.655763736": minutes, "entry.1544471406": clientId })
   @solverActive = false
 

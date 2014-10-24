@@ -27,7 +27,7 @@
   background-color: lightblue !important;
 }
 .board-cell[type='unknown'] {
-  background-color: rgb(200,200,200) !important;
+  background-color: #c8ddc8 !important;
 }
 
 .board-row-consts-cell[hovered-row] {
@@ -56,4 +56,8 @@
   text-align: center;
   margin-top: 10px;
   color: #00a300;
+}
+
+.board-cell[type='black'] {
+  border-color: gray;
 }

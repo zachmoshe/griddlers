@@ -3,11 +3,14 @@
   table-layout: fixed;
   margin: auto;
 
+  tr, td {
+    border-color: black;
+  }
   tr:nth-child(5n+1).grid-boxes {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid;
   }
   td:nth-child(5n+1).grid-boxes {
-    border-right: 2px solid black;
+    border-right: 2px solid;
   }
 
 }
