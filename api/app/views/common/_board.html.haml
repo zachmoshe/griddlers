@@ -4,12 +4,14 @@
 - show_gridboxes = if local_assigns.has_key?(:show_gridboxes) then show_gridboxes else nil end
 - tooltips = true if ["tiny", "small"].include? size
 
+- grid_boxes_class = if show_gridboxes then "grid-boxes" else nil end
+
 %table.board.center
   - if show_constraints
     %tr.board-line{ class: board_class }
       %td
       - board.columns_constraints.each do |cons|
-        %td.board-column-consts-cell
+        %td.board-column-consts-cell{ class: grid_boxes_class }
           - if tooltips
             - tooltip_text = cons.join("<br/>")
             %span.const-tooltip.fa.fa-chevron-down{ 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => tooltip_text }
@@ -18,9 +20,8 @@
               %div.column-consts-cell
                 = num
 
-  - grid_boxes_class = if show_gridboxes then "grid-boxes" else nil end
   - board.matrix.each_with_index do |line, i|
-    %tr.board-line{ class: [board_class, grid_boxes_class] }
+    %tr.board-line{ row: i, class: [board_class, grid_boxes_class] }
       - if show_constraints
         %td.board-row-consts-cell
           - if tooltips
@@ -31,8 +32,8 @@
               %span.row-consts-cell
                 = num
 
-      - line.each do |cell|
-        %td.board-cell{ class: grid_boxes_class, style: "background-color: rgba(0,0,0,#{cell})" }
+      - line.each_with_index do |cell, j|
+        %td.board-cell{ row: i, col: j, class: grid_boxes_class, style: "background-color: rgba(0,0,0,#{cell})" }
 
 
 :javascript

@@ -4,11 +4,12 @@
   margin: auto;
 
   tr:nth-child(5n+1).grid-boxes {
-    border-bottom: 2px solid;
+    border-bottom: 2px solid black;
   }
   td:nth-child(5n+1).grid-boxes {
-    border-right: 2px solid;
+    border-right: 2px solid black;
   }
+
 }
 
 .board-line {

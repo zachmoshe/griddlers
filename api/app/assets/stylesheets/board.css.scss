@@ -1,0 +1,59 @@
+// Place all the styles related to the board controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.solver-header {
+  text-align: center;
+}
+
+.board-cell[type='black'] {
+  background-color: black !important;
+}
+.board-cell[type='white'] {
+  background-color: white !important;
+}
+.board-cell[type='guess-black'] {
+  background-color: darkblue !important;
+}
+.board-cell[type='guess-white'] {
+  background-color: lightblue !important;
+}
+.board-cell[type='unknown'] {
+  background-color: rgb(200,200,200) !important;
+}
+
+.board-row-consts-cell[hovered-row] {
+  background-color: lightblue;
+}
+.board-column-consts-cell[hovered-col] {
+  background-color: lightblue;
+}
+
+
+.stopwatch-panel {
+  float: left;
+}
+#stopwatch {
+  font-size: 2em;
+  vertical-align: middle;
+  margin-left: 10px;
+  border: 0px solid red;
+}
+.ui-effects-wrapper {
+  display:inline;
+}
+
+.welldone {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 10px;
+  color: #00a300;
+}
