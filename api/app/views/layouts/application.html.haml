@@ -60,31 +60,31 @@
 
         = yield
 
-      %nav.navbar.bottom-navbar.navbar-default.navbar-fixed-bottom{ role: :navigation }
-        .row
-          .col-xs-3
-            .bottom-navbar-cell.bottom-navbar-text-cell
-              %i.fa.pull-right.fa-hand-o-right.fa-5x
-              .h3 Want to submit your own boards?
-          .col-xs-3
-            .bottom-navbar-cell
-              = link_to(archive_1_path, class: "btn btn-primary btn-lg btn-block navbar-btn") do
-                %i.fa.fa-folder
-                Submit Griddlers from lancs.ac.uk
-              Original website:
-              = link_to("http://www.comp.lancs.ac.uk/~ss/nonogram/", "http://www.comp.lancs.ac.uk/~ss/nonogram/")
-          .col-xs-3
-            .bottom-navbar-cell
-              = link_to(archive_2_path, class: "btn btn-primary btn-lg btn-block navbar-btn") do
-                %i.fa.fa-folder
-                Submit Griddlers from jsimlo.sk
-              Original Website:
-              = link_to("http://jsimlo.sk/griddlers/", "http://jsimlo.sk/griddlers/ ")
-          .col-xs-3
-            .bottom-navbar-cell
-              =link_to(new_request_path, class: "btn btn-primary btn-lg btn-block navbar-btn") do
-                %i.fa.fa-pencil
-                Manually type your own board
+      -#%nav.navbar.bottom-navbar.navbar-default.navbar-fixed-bottom{ role: :navigation }
+      .row.bottom-navbar
+        .col-xs-3
+          .bottom-navbar-cell.bottom-navbar-text-cell
+            %i.fa.pull-right.fa-hand-o-right.fa-5x
+            .h3 Want to submit your own boards?
+        .col-xs-3
+          .bottom-navbar-cell
+            = link_to(archive_1_path, class: "btn btn-primary btn-lg btn-block navbar-btn") do
+              %i.fa.fa-folder
+              Submit Griddlers from lancs.ac.uk
+            Original website:
+            = link_to("http://www.comp.lancs.ac.uk/~ss/nonogram/", "http://www.comp.lancs.ac.uk/~ss/nonogram/")
+        .col-xs-3
+          .bottom-navbar-cell
+            = link_to(archive_2_path, class: "btn btn-primary btn-lg btn-block navbar-btn") do
+              %i.fa.fa-folder
+              Submit Griddlers from jsimlo.sk
+            Original Website:
+            = link_to("http://jsimlo.sk/griddlers/", "http://jsimlo.sk/griddlers/ ")
+        .col-xs-3
+          .bottom-navbar-cell
+            =link_to(new_request_path, class: "btn btn-primary btn-lg btn-block navbar-btn") do
+              %i.fa.fa-pencil
+              Manually type your own board
 
 
 

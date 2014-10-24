@@ -1,10 +1,14 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+
+
 onClick = (ev) ->
   setCell(this)
 
 setCell = (cell) ->
+  if not @solverActive
+    return
   if @stopwatchIntervalId != null
     selectedColor = $('.board-solver-color.btn-primary').attr('type')
     $(cell).attr("type", selectedColor)
@@ -69,11 +73,15 @@ paddy = (n,p) ->
 
 
 @stopwatchPlayClicked = () ->
+  if not @solverActive
+    return
   trackBoardSolver('stopwatch_resumed', @board_id)
   if @stopwatchIntervalId is null
     @stopwatchIntervalId = setInterval(advanceStopwatch, 1000)
 
 @stopwatchPauseClicked = () ->
+  if not @solverActive
+    return
   trackBoardSolver('stopwatch_paused', @board_id)
   clearInterval(@stopwatchIntervalId)
   @stopwatchIntervalId = null
@@ -132,10 +140,17 @@ boardDone = ->
   $('.board').after('<div class="welldone">Well Done!! It took you ' + minutes + ' minutes')
   trackBoardSolver('board_finished', @board_id)
 
+  clientId = 'unknown_cliend_id'
+  ga (tracker) ->
+    clientId = tracker.get 'clientId'
+  if window.location.hostname.match('localhost$').length > 0
+    $.post('https://docs.google.com/forms/d/124-Nn8KB11aa9A3j6X2MwZgcs1n4phlLPnPYG7xA2uM/formResponse', {"entry.1214389103": 'Board #'+@board_id.toString(), "entry.655763736": minutes, "entry.1544471406": clientId })
+  @solverActive = false
 
 
 @stopwatchIntervalId = null
 @initializeBoard = (board) ->
+  @solverActive = true
   $(document).keypress(detectColorChange);
 
   board.find('.board-cell').css 'cursor', 'cell'
