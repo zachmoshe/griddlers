@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get '/2', action: 'show_jsimlo'
   end
 
-  get 'board/:id' => 'board#show'
+  get 'board/:id' => 'board#show', as: 'show_board'
 
 
   mount Sidekiq::Web => '/sidekiq'

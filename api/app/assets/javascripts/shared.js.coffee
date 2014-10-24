@@ -2,8 +2,8 @@
   ga "send", "event", "BoardRequests", "submit", label
   return
 
-@trackHelpMeBoardDownload = (board_id) ->
-  ga "send", "event", "WillYouHelpMe", "download_board", board_id
+@trackHelpMeBoardDownload = (event, board_id) ->
+  ga "send", "event", "WillYouHelpMe", event, board_id
   return
 
 @trackSocialInteraction = (site) ->
