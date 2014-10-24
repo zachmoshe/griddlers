@@ -69,10 +69,12 @@ paddy = (n,p) ->
 
 
 @stopwatchPlayClicked = () ->
+  trackBoardSolver('stopwatch_resumed', @board_id)
   if @stopwatchIntervalId is null
     @stopwatchIntervalId = setInterval(advanceStopwatch, 1000)
 
 @stopwatchPauseClicked = () ->
+  trackBoardSolver('stopwatch_paused', @board_id)
   clearInterval(@stopwatchIntervalId)
   @stopwatchIntervalId = null
   $('.board .board-cell').css 'background-color', 'lightgreen'
@@ -106,7 +108,6 @@ generateSequence = (l) ->
 
 checkBoardComplete = ->
   if $('.board .board-cell[type="unknown"]').length + $('.board .board-cell[type="guess-black"]').length + $('.board .board-cell[type="guess-white"]').length > 0
-    console.log "board not ready"
     return false
 
   # check rows
@@ -120,17 +121,16 @@ checkBoardComplete = ->
       $(x).find('.board-cell')[i]
     )
     if currSeq.toString() != colConsts.toString()
-      console.log "column " + i + " doesn't amtch. " + currSeq + " != " + colConsts
+      return false
 
+  return true
 
 boardDone = ->
   $('.board').css 'border', '3px solid green'
   stopwatchPauseClicked()
-
   minutes = Math.floor($('#stopwatch').attr('seconds')/60)
-
   $('.board').after('<div class="welldone">Well Done!! It took you ' + minutes + ' minutes')
-
+  trackBoardSolver('board_finished', @board_id)
 
 
 
@@ -146,6 +146,9 @@ boardDone = ->
   # initialize rows and columns constraints
   @row_consts = JSON.parse($('boarddata').attr('row_constraints'))
   @column_consts = JSON.parse($('boarddata').attr('column_constraints'))
+  @board_id = $('boarddata').attr('board_id')
 
   # start the stopwatch
   @stopwatchIntervalId = setInterval(advanceStopwatch, 1000)
+
+  trackBoardSolver('board_started', @board_id)

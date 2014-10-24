@@ -35,7 +35,7 @@
   .col-xs-12
     .noselect
       = render 'common/board', board: @board[:board], show_constraints: true, show_gridboxes: true
-      %boarddata{ style: 'display: none;', row_constraints: JSON.dump(@board[:board].rows_constraints), column_constraints: JSON.dump(@board[:board].columns_constraints) }
+      %boarddata{ style: 'display: none;', board_id: @board[:id], row_constraints: JSON.dump(@board[:board].rows_constraints), column_constraints: JSON.dump(@board[:board].columns_constraints) }
 
 :javascript
   b = $(".board")

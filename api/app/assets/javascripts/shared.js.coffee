@@ -10,6 +10,8 @@
   ga "send", "event", "SocialContactInteraction", "click_link", site
   return
 
+@trackBoardSolver = (event, board_id) ->
+  ga 'send', 'event', 'BoardSolver', event, board_id
 
 parse_constraints = (cons_str) ->
   cons = cons_str.split('\n')
