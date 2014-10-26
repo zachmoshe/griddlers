@@ -28,7 +28,7 @@ cellMouseOver = (ev) ->
   $('.board-column-consts-cell').removeAttr 'hovered-col'
   $('.board-column-consts-cell').eq(col).attr 'hovered-col', 'hovered-col'
 
-  if ev.which == 1 and ev.button == 0 # left button pressed
+  if ev.which == 1 and ( (typeof(ev.buttons)=='number' and ev.buttons == 1) or (typeof(ev.buttons)=='undefined' and ev.button == 0))
     setCell(this)
 
 setChosenColor = (color) ->
