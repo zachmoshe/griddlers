@@ -1,0 +1,29 @@
+.row
+  .col-xs-12
+    .text-center
+      .h1
+        About
+
+.row.content-row
+  .col-xs-12
+    %p.big
+      'Griddlers-Ninja' is a (beta) website that automatically solves
+      = link_to 'Griddlers', 'http://www.wikiwand.com/en/Nonogram'
+      puzzles.
+      There is no commercial intention behind it, I started it because I thought it would be nice to visualize the
+      probability for a black cell after every iteration of the 'naive' algorithm (naive means the way we all solve these
+      puzzles - iterating rows and columns, looking for certain blacks/whites). The results were nice, you can see them
+      if you choose to solve a puzzle with the 'naive-probs' algorithm, and now I'm thinking
+      of applying
+      = link_to 'Constraint Satisfaction Problems', 'http://www.wikiwand.com/en/Constraint_satisfaction_problem'
+      techniques or
+      = link_to 'Genetic Algorithms', 'http://www.wikiwand.com/en/Genetic_algorithm'
+      in order to add more swords to my Ninja's arsenal.
+    %p.big
+      A bit about myself - I'm a software developer/data scientist (if someone can define what this is..), have a lot of
+      experience with e-commerce fraud prevention and data analytics, led research and
+      development teams in PayPal, CapitalCadence and Wonga. I've recently started a tech blog -
+      = link_to 'zachmoshe.com', 'http://zachmoshe.com'
+      , where I put interesting stuff, both technically and small research side-projects I do.
+    %p{ style: "height: 500px;" }
+

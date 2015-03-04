@@ -3,6 +3,7 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
   get 'willyouhelpme' => 'static_pages#measure_human_time'
+  get 'about' => 'static_pages#about'
 
   # Here just for manual uses (on development machine)
   #get 'board_pdf/:id' => 'static_pages#board_pdf'

@@ -39,9 +39,16 @@
               = link_to 'http://github.com/zachmoshe', target: '_blank', onclick: "trackSocialInteraction('github')" do
                 %i.fa.fa-2x.fa-github
             .header-face-image
-              = image_tag('zachmoshe-face.png', height: 100, width: 100)
-              .pull-right
-                Zach Moshe
+              = link_to 'http://zachmoshe.com' do
+                = image_tag('zachmoshe-face.png', height: 100, width: 100)
+                .pull-right
+                  Zach Moshe
+
+          .header-links.pull-right
+            =link_to '/about' do
+              .header-link
+                %i.fa.fa-question.fa-5x
+                What is this all about?
 
           .h1
             = image_tag 'griddlers-board-logo.png', height: "70", width: "70", style: 'vertical-align: bottom;'

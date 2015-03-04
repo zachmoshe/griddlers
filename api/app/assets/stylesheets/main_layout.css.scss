@@ -91,3 +91,21 @@ body {
     text-align: center;
   }
 }
+
+.header-links {
+  margin-right: 80px;
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .header-link {
+    text-align: center;
+    font-size: 18px;
+
+    i {
+      display: block;
+      font-size: 5em;
+    }
+  }
+}
