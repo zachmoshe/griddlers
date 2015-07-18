@@ -1,0 +1,31 @@
+/* board table, row and cell styles */
+.board-table { 
+  padding-top: 15px;
+}
+
+.board-row { 
+  height: 1em;
+  margin-bottom: -1px;
+  
+}
+
+.board-cell { 
+  display: inline-block;
+  border: 1px solid black;
+  margin-right: -1px;
+  padding: 0px;
+  width: 1em;
+  height: 1em;
+}
+
+
+.board-panel > *[class^='col-xs-'] { 
+  padding: 0px;
+}
+
+.board-progressbar { 
+  overflow: hidden;
+  width: auto;
+  height: 30px;
+}
+
