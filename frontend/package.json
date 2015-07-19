@@ -36,5 +36,10 @@
   },
   "scripts": {
     "test": "grunt test"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1.39",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13"
   }
 }
