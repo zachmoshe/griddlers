@@ -11,29 +11,30 @@ Chart.defaults.global.scaleBeginAtZero = true;
 
 angular.module('griddlersApp')
 	.controller('BoardCtrl', [ '$scope', 'BoardService', function ($scope, boardSvc) {
-		var iterations = [];
+		var iterations = null;
 		var currentIter = 0;
+		$scope.chart = {};
 
 		var setIterations = function(iters) {
 			iterations = iters;
 			currentIter = 0;
 			$scope.iter = iterations[currentIter];
 
-			$scope.chartDataSeries = [ 
+			$scope.chart.dataSeries = [ 
 				iters.map(function(iter) { return iter.stats.pct_certain.toFixed(2); }),
 				//iters.map(function(iter) { return iter.stats.time_elapsed.toFixed(2); }),
 				iters.map(function(iter) { return iter.stats.avg_change.toFixed(2); }),
 			];
-			$scope.chartLabels = iters.map(function(iter) { return 'Iter #' + iter.iteration_number; });
-			$scope.chartSeries = [ 
+			$scope.chart.labels = iters.map(function(iter) { return 'Iter #' + iter.iteration_number; });
+			$scope.chart.series = [ 
 				'% Certain', 
 				//'Time', 
 				'Avg Change'
 			];
-			$scope.chartOptions = { 
+			$scope.chart.options = { 
 				bezierCurveTension: 0.1,
 			};
-			$scope.chartColors = [ '#FF4444', '#44FF44', '#4444FF' ];
+			$scope.chart.colors = [ '#FF4444', '#44FF44', '#4444FF' ];
 		};
 
 		$scope.nextIter = function() { 
@@ -46,10 +47,18 @@ angular.module('griddlersApp')
 		};
 
 		$scope.iterPct = function() { 
+			if (!iterations) { return 0; }
 			return (100 * (currentIter + 1) / iterations.length).toFixed(0);
-		}
+		};
+
+		$scope.ready = function() { 
+			return (iterations != null);
+		};
 
 		$scope.setWorkId = function(workId, callback) { 
+			iterations = null;
+			$scope.chart.dataSeries = [];
+			$scope.chart = {};
 			boardSvc.loadWorkResults(workId, function(err, data) { 
 				if (err) { 
 					if (err.code == 'NoSuchKey') { 

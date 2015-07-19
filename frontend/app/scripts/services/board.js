@@ -12,7 +12,6 @@ angular.module('griddlersApp')
 		var S3 = new AWS.S3();
 
 		this.loadWorkResults = function(workID, callback) { 
-			console.log("getting work results for ", workID);
 			S3.getObject({ 
 				Bucket: griddlersConfig.s3WorkBucket,
 				Key: workID + '/results.json'
@@ -27,7 +26,7 @@ angular.module('griddlersApp')
 					}
 				}
 			});
-		}
+		};
 
 
 			
