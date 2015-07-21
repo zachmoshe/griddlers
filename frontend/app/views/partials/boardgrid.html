@@ -1,6 +1,27 @@
 <div class="board-table">
-	<div ng-repeat="row in board.matrix track by $index" class="board-row">
-		<div ng-repeat="prob in row track by $index" class="board-cell" style="background-color: hsl(0,0%,{{100-prob*100}}%)">
+	<div>
+		<!-- Columns constraints -->
+		<div style="display: flex; justify-content: flex-end">
+			<div ng-repeat="colCons in board.constraints.columns track by $index" class="board-cons-col">
+				<span class="board-cons-col-item" ng-repeat="consItem in colCons track by $index">{{ consItem }}</span>
+			</div>
+		</div>
+	</div>
+
+	<div style="display: flex; justify-content: flex-end">
+		<!-- Rows constraints -->
+		<div>
+			<div ng-repeat="rowCons in board.constraints.rows track by $index" class="board-row board-cons-row">
+				<span class="board-cons-row-item" ng-repeat="consItem in rowCons track by $index">{{ consItem }}</span>
+			</div>
+		</div>
+
+		<!-- Main table -->
+		<div>
+			<div ng-repeat="row in board.matrix track by $index" class="board-row">
+				<div ng-repeat="prob in row track by $index" class="board-cell" style="background-color: hsl(0,0%,{{100-prob*100}}%)">
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

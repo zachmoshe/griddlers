@@ -1,0 +1,48 @@
+/* board table, row and cell styles */
+.board-table { 
+  padding-top: 15px;
+  line-height: 1em;
+  font-size: 18px;
+}
+
+.board-row { 
+  height: 1em;
+  margin-bottom: -1px;
+}
+
+.board-cons-row { 
+	background: lightyellow;
+	border: 1px solid black;
+	text-align: right;
+}
+
+.board-cons-row-item { 
+	padding: 2px 4px 2px 4px;
+	font-size: 0.75em;
+	overflow: hidden;
+}
+
+.board-cons-col { 
+	background: lightyellow;
+	border: 1px solid black;
+	text-align: center;
+	display: inline;
+	width: 1em;
+	margin-right: -1px;
+}
+
+.board-cons-col-item { 
+	padding: 2px;
+	font-size: 0.75em;
+	overflow: hidden;
+	display: block;
+}
+
+.board-cell { 
+  display: inline-block;
+  border: 1px solid black;
+  margin-right: -1px;
+  padding: 0px;
+  width: 1em;
+  height: 1em;
+}
