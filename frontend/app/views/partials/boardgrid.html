@@ -1,0 +1,6 @@
+<div class="board-table">
+	<div ng-repeat="row in board.matrix track by $index" class="board-row">
+		<div ng-repeat="prob in row track by $index" class="board-cell" style="background-color: hsl(0,0%,{{100-prob*100}}%)">
+		</div>
+	</div>
+</div>

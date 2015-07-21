@@ -12,7 +12,6 @@
 	</div>
 
 
-
 	<!-- The charts -->
 	<div class="col-xs-4 col-xs-offset-2" ng-if="iterationsReady()">
 		<canvas id="iterationsChart" class="chart chart-line pull-right" 
@@ -29,28 +28,22 @@
 	<!-- Grid plus prev/next buttons and progress bar -->
 	<div class="col-xs-4" ng-if="iterationsReady()">
 		<div class="row">
-			
-			<div class="col-xs-12">
-				<div class="board-table pull-left">
-					<div ng-repeat="row in iter.board.matrix track by $index" class="board-row">
-						<div ng-repeat="prob in row track by $index" class="board-cell" style="background-color: hsl(0,0%,{{100-prob*100}}%)">
-						</div>
-					</div>
+			<div class="col-xs-12 board-panel-grid-buttons">
+				<board-grid board="iter.board"></board-grid>
 
-					<div>
-						<div class="btn btn-sm btn-primary pull-left" ng-click="prevIter()"><span class="glyphicon glyphicon-chevron-left"></span></div>
-						<div class="btn btn-sm btn-primary pull-right" ng-click="nextIter()"><span class="glyphicon glyphicon-chevron-right"></span></div>
-						<div class="btn btn-sm btn-primary pull-right"><span class="glyphicon glyphicon-play"></span></div>
+				<div>
+					<div class="btn btn-sm btn-primary pull-left" ng-click="prevIter()"><span class="glyphicon glyphicon-chevron-left"></span></div>
+					<div class="btn btn-sm btn-primary pull-right" ng-click="nextIter()"><span class="glyphicon glyphicon-chevron-right"></span></div>
+					<div class="btn btn-sm btn-primary pull-right"><span class="glyphicon glyphicon-play"></span></div>
 
-						<div class="progress board-progressbar">
-							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ iterPct() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ iterPct() }}%;">
-								<span class="sr-only">Iteration #{{ iter.iteration_number }}</span>
-							</div>
+					<div class="progress board-progressbar">
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ iterPct() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ iterPct() }}%;">
+							<span class="sr-only">Iteration #{{ iter.iteration_number }}</span>
 						</div>
 					</div>
 				</div>
-			</div>
 
+			</div>
 		</div>
 	</div>
 </div>

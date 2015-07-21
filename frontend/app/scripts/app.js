@@ -35,7 +35,7 @@ angular
 				controllerAs: 'main'
 			})
 			.when('/board', {
-				templateUrl: 'views/boardPanel.html',
+				templateUrl: 'views/boardpanel.html',
 				controller: 'BoardPanelCtrl',
 				controllerAs: 'board'
 			})

@@ -9,7 +9,7 @@ Chart.defaults.global.scaleBeginAtZero = true;
  * @ngdoc function
  * @name griddlersApp.controller:BoardPanelCtrl
  * @description
- * # BoardPabnelCtrl
+ * # BoardPanelCtrl
  * Controller of the griddlersApp
  */
 
