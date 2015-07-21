@@ -1,5 +1,7 @@
 'use strict';
 
+/*globals AWS */
+
 /**
  * @ngdoc service
  * @name griddlersApp.board
@@ -13,11 +15,17 @@ angular.module('griddlersApp')
 
 		this.loadWorkResults = function(workID, callback) { 
 			S3.getObject({ 
-				Bucket: griddlersConfig.s3WorkBucket,
+				Bucket: window.griddlersConfig.s3WorkBucket,
 				Key: workID + '/results.json'
 			}, function(err, data) { 
-				if (err) { callback(err); }
-				else { 
+				if (err) { 
+					if (err.code === 'NoSuchKey') { 
+						callback("No such key " + workID);
+					} else { 
+						callback(err.message);
+					}
+
+				} else { 
 					try { 
 						var obj = JSON.parse(data.Body);
 						callback(null, obj);

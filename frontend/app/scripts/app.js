@@ -1,12 +1,12 @@
 'use strict';
 
+/* globals AWS */
+
 /* AWS configuration */
-AWS.config.region = griddlersConfig.awsRegion;
+AWS.config.region = window.griddlersConfig.awsRegion;
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-	IdentityPoolId: griddlersConfig.cognitoPoolId,
+	IdentityPoolId: window.griddlersConfig.cognitoPoolId,
 });
-
-
 
 
 /**

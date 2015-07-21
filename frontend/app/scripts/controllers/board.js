@@ -1,5 +1,10 @@
 'use strict';
 
+/*globals Chart */
+
+Chart.defaults.global.scaleBeginAtZero = true;
+
+
 /**
  * @ngdoc function
  * @name griddlersApp.controller:BoardCtrl
@@ -7,7 +12,6 @@
  * # BoardCtrl
  * Controller of the griddlersApp
  */
-Chart.defaults.global.scaleBeginAtZero = true;
 
 angular.module('griddlersApp')
 	.controller('BoardCtrl', [ '$scope', 'BoardService', function ($scope, boardSvc) {
@@ -52,28 +56,22 @@ angular.module('griddlersApp')
 		};
 
 		$scope.ready = function() { 
-			return (iterations != null);
+			return (iterations !== null);
 		};
 
-		$scope.setWorkId = function(workId, callback) { 
+		$scope.setWorkId = function(workId) { 
 			iterations = null;
 			$scope.chart.dataSeries = [];
 			$scope.chart = {};
 			boardSvc.loadWorkResults(workId, function(err, data) { 
-				if (err) { 
-					if (err.code == 'NoSuchKey') { 
-						console.error("No such key " + workId);
-					} else { 
-						console.error("Other S3 error - ", err.message)
-					}
-				}
+				if (err) { console.error("Error while loading workId " + workId + " : " + err); }
 				else { 
 					$scope.$evalAsync(function() { 
 						setIterations(data);
 					});
 				}
 			});
-		}
+		};
 
 
 	}]);
