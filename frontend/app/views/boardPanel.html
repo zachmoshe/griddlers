@@ -2,7 +2,7 @@
 <button class="btn btn-primary" ng-click="setWorkId(1)">Load workId 1</button>
 <button class="btn btn-primary" ng-click="setWorkId(2)">Load workId 2</button>
 
-<div class="row board-panel" >
+<div class="row" >
 		
 	<!-- Loading icon -->
 	<div class="col-xs-12" ng-if="isBoardLoading">
@@ -12,8 +12,32 @@
 	</div>
 
 
+	<!-- Grid plus prev/next buttons and progress bar -->
+	<div class="col-xs-12 col-md-4 col-md-offset-4 text-center" ng-if="iterationsReady()">
+		<div class="board-panel-grid-buttons">
+			<!-- grid -->
+			<board-grid board="iter.board"></board-grid>
+
+			<!-- buttons -->
+			<div>
+				<div class="btn btn-sm btn-primary pull-left" ng-click="prevIter()"><span class="glyphicon glyphicon-chevron-left"></span></div>
+				<div class="btn btn-sm btn-primary pull-right" ng-click="nextIter()"><span class="glyphicon glyphicon-chevron-right"></span></div>
+				<div class="btn btn-sm btn-primary pull-right"><span class="glyphicon glyphicon-play"></span></div>
+
+				<div class="progress board-progressbar">
+					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ iterPct() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ iterPct() }}%;">
+						<span class="sr-only">Iteration #{{ iter.iteration_number }}</span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
 	<!-- The charts -->
-	<div class="col-xs-4 col-xs-offset-2" ng-if="iterationsReady()">
+	<div class="col-xs-12 col-md-4 col-md-offset-4 text-center" ng-if="iterationsReady()">
 		<canvas id="iterationsChart" class="chart chart-line pull-right" 
 				data="chart.dataSeries" 
 				labels="chart.labels" 
@@ -25,26 +49,6 @@
 				></canvas>      
 	</div>
 
-	<!-- Grid plus prev/next buttons and progress bar -->
-	<div class="col-xs-4" ng-if="iterationsReady()">
-		<div class="row">
-			<div class="col-xs-12 board-panel-grid-buttons">
-				<board-grid board="iter.board"></board-grid>
 
-				<div>
-					<div class="btn btn-sm btn-primary pull-left" ng-click="prevIter()"><span class="glyphicon glyphicon-chevron-left"></span></div>
-					<div class="btn btn-sm btn-primary pull-right" ng-click="nextIter()"><span class="glyphicon glyphicon-chevron-right"></span></div>
-					<div class="btn btn-sm btn-primary pull-right"><span class="glyphicon glyphicon-play"></span></div>
-
-					<div class="progress board-progressbar">
-						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ iterPct() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ iterPct() }}%;">
-							<span class="sr-only">Iteration #{{ iter.iteration_number }}</span>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
 </div>
 
