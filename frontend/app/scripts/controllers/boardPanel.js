@@ -7,14 +7,14 @@ Chart.defaults.global.scaleBeginAtZero = true;
 
 /**
  * @ngdoc function
- * @name griddlersApp.controller:BoardCtrl
+ * @name griddlersApp.controller:BoardPanelCtrl
  * @description
- * # BoardCtrl
+ * # BoardPabnelCtrl
  * Controller of the griddlersApp
  */
 
 angular.module('griddlersApp')
-	.controller('BoardCtrl', [ '$scope', 'BoardService', function ($scope, boardSvc) {
+	.controller('BoardPanelCtrl', [ '$scope', 'BoardService', function ($scope, boardSvc) {
 		var iterations = null;
 		var currentIter = 0;
 		$scope.chart = {

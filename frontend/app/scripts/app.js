@@ -35,8 +35,8 @@ angular
 				controllerAs: 'main'
 			})
 			.when('/board', {
-				templateUrl: 'views/board.html',
-				controller: 'BoardCtrl',
+				templateUrl: 'views/boardPanel.html',
+				controller: 'BoardPanelCtrl',
 				controllerAs: 'board'
 			})
 			.otherwise({
