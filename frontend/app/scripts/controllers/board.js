@@ -17,7 +17,16 @@ angular.module('griddlersApp')
 	.controller('BoardCtrl', [ '$scope', 'BoardService', function ($scope, boardSvc) {
 		var iterations = null;
 		var currentIter = 0;
-		$scope.chart = {};
+		$scope.chart = {
+			dataSeries: [ [], [] ],
+			labels: [],
+			series: [ '% Certain', 'Avg Change' ],
+			options: {
+				bezierCurveTension: 0.1,
+			},
+			colors: [ '#FF4444', '#44FF44', '#4444FF' ]
+		};
+		$scope.isBoardLoading = false;
 
 		var setIterations = function(iters) {
 			iterations = iters;
@@ -26,19 +35,9 @@ angular.module('griddlersApp')
 
 			$scope.chart.dataSeries = [ 
 				iters.map(function(iter) { return iter.stats.pct_certain.toFixed(2); }),
-				//iters.map(function(iter) { return iter.stats.time_elapsed.toFixed(2); }),
 				iters.map(function(iter) { return iter.stats.avg_change.toFixed(2); }),
 			];
 			$scope.chart.labels = iters.map(function(iter) { return 'Iter #' + iter.iteration_number; });
-			$scope.chart.series = [ 
-				'% Certain', 
-				//'Time', 
-				'Avg Change'
-			];
-			$scope.chart.options = { 
-				bezierCurveTension: 0.1,
-			};
-			$scope.chart.colors = [ '#FF4444', '#44FF44', '#4444FF' ];
 		};
 
 		$scope.nextIter = function() { 
@@ -55,18 +54,21 @@ angular.module('griddlersApp')
 			return (100 * (currentIter + 1) / iterations.length).toFixed(0);
 		};
 
-		$scope.ready = function() { 
-			return (iterations !== null);
+		$scope.iterationsReady = function() { 
+			return (iterations !== null && iterations.length > 0);
 		};
+
 
 		$scope.setWorkId = function(workId) { 
 			iterations = null;
-			$scope.chart.dataSeries = [];
-			$scope.chart = {};
+			$scope.isBoardLoading = true;
 			boardSvc.loadWorkResults(workId, function(err, data) { 
-				if (err) { console.error("Error while loading workId " + workId + " : " + err); }
-				else { 
+				if (err) { 
+					$scope.isBoardLoading = false;
+					console.error("Error while loading workId " + workId + " : " + err); 
+				} else { 
 					$scope.$evalAsync(function() { 
+						$scope.isBoardLoading = false;
 						setIterations(data);
 					});
 				}

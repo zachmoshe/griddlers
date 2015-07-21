@@ -2,10 +2,19 @@
 <button class="btn btn-primary" ng-click="setWorkId(1)">Load workId 1</button>
 <button class="btn btn-primary" ng-click="setWorkId(2)">Load workId 2</button>
 
-<div class="row board-panel">
-	
+<div class="row board-panel" >
+		
+	<!-- Loading icon -->
+	<div class="col-xs-12" ng-if="isBoardLoading">
+		<div class="board-loading-icon">
+			<span class="glyphicon glyphicon-refresh glyphicon-spin-animate gi-5x"></span>
+		</div>
+	</div>
+
+
+
 	<!-- The charts -->
-	<div class="col-xs-4 col-xs-offset-2">
+	<div class="col-xs-4 col-xs-offset-2" ng-if="iterationsReady()">
 		<canvas id="iterationsChart" class="chart chart-line pull-right" 
 				data="chart.dataSeries" 
 				labels="chart.labels" 
@@ -18,11 +27,11 @@
 	</div>
 
 	<!-- Grid plus prev/next buttons and progress bar -->
-	<div class="col-xs-4">
+	<div class="col-xs-4" ng-if="iterationsReady()">
 		<div class="row">
 			
 			<div class="col-xs-12">
-				<div class="board-table pull-left" ng-show="ready()">
+				<div class="board-table pull-left">
 					<div ng-repeat="row in iter.board.matrix track by $index" class="board-row">
 						<div ng-repeat="prob in row track by $index" class="board-cell" style="background-color: hsl(0,0%,{{100-prob*100}}%)">
 						</div>
@@ -38,7 +47,6 @@
 								<span class="sr-only">Iteration #{{ iter.iteration_number }}</span>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
