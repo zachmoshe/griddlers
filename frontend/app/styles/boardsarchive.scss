@@ -8,8 +8,17 @@
 	height: 200px;
 }
 
-.archive-panel { 
-	padding: 10px;
-	border: 1px solid lightblue;
-	border-radius: 10px;
+.archive-board-panel {
+  padding: 10px;
+  border: 1px solid lightblue;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.archive-board-name { 
+	text-transform: capitalize;
+	padding-bottom: 5px;
+	border-bottom: 1px solid gray;
+	margin-bottom: 10px;
 }
