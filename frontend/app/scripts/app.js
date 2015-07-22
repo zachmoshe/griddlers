@@ -25,7 +25,8 @@ angular
 		'ngRoute',
 		'ngSanitize',
 		'ngTouch',
-		'chart.js'
+		'chart.js',
+		'ui.bootstrap'
 	])
 	.config(function ($routeProvider) {
 		$routeProvider
@@ -38,6 +39,11 @@ angular
 				templateUrl: 'views/boardpanel.html',
 				controller: 'BoardPanelCtrl',
 				controllerAs: 'board'
+			})
+			.when('/archive', {
+				templateUrl: 'views/boardsarchive.html',
+				controller: 'BoardsArchiveCtrl',
+				controllerAs: 'archive'
 			})
 			.otherwise({
 				redirectTo: '/'

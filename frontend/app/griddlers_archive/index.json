@@ -1,0 +1,596 @@
+[
+  {
+    "svg": "alien.sgriddler.svg",
+    "board": "alien.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "anime.sgriddler.svg",
+    "board": "anime.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "appaloosa.sgriddler.svg",
+    "board": "appaloosa.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "aquarius.sgriddler.svg",
+    "board": "aquarius.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "badger.sgriddler.svg",
+    "board": "badger.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "bear1.sgriddler.svg",
+    "board": "bear1.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "bear2.sgriddler.svg",
+    "board": "bear2.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "bird.sgriddler.svg",
+    "board": "bird.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "blackbird.sgriddler.svg",
+    "board": "blackbird.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "bull.sgriddler.svg",
+    "board": "bull.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "butterfly.sgriddler.svg",
+    "board": "butterfly.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "calimero.sgriddler.svg",
+    "board": "calimero.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "campfire.sgriddler.svg",
+    "board": "campfire.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "car.sgriddler.svg",
+    "board": "car.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "checkmate.sgriddler.svg",
+    "board": "checkmate.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "cobra.sgriddler.svg",
+    "board": "cobra.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "cottage1.sgriddler.svg",
+    "board": "cottage1.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "cottage2.sgriddler.svg",
+    "board": "cottage2.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "cow.sgriddler.svg",
+    "board": "cow.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "cube.sgriddler.svg",
+    "board": "cube.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "dance.sgriddler.svg",
+    "board": "dance.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "dante.sgriddler.svg",
+    "board": "dante.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "dog.sgriddler.svg",
+    "board": "dog.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "doggie.sgriddler.svg",
+    "board": "doggie.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "donkey.sgriddler.svg",
+    "board": "donkey.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "dragon.sgriddler.svg",
+    "board": "dragon.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "dragon2.sgriddler.svg",
+    "board": "dragon2.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "drakkar.sgriddler.svg",
+    "board": "drakkar.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "eagle.sgriddler.svg",
+    "board": "eagle.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "ernie.sgriddler.svg",
+    "board": "ernie.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "face.sgriddler.svg",
+    "board": "face.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "feeding.sgriddler.svg",
+    "board": "feeding.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "fish.sgriddler.svg",
+    "board": "fish.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "flower.sgriddler.svg",
+    "board": "flower.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "football.sgriddler.svg",
+    "board": "football.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "frog.sgriddler.svg",
+    "board": "frog.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "fruits.sgriddler.svg",
+    "board": "fruits.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "galleon1.sgriddler.svg",
+    "board": "galleon1.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "galleon3.sgriddler.svg",
+    "board": "galleon3.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "galleon4.sgriddler.svg",
+    "board": "galleon4.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "genie.sgriddler.svg",
+    "board": "genie.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "giraffe.sgriddler.svg",
+    "board": "giraffe.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "grapes.sgriddler.svg",
+    "board": "grapes.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "heavymetal.sgriddler.svg",
+    "board": "heavymetal.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "hedgehog.sgriddler.svg",
+    "board": "hedgehog.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "herrculestower.sgriddler.svg",
+    "board": "herrculestower.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "horse1.sgriddler.svg",
+    "board": "horse1.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "horse2.sgriddler.svg",
+    "board": "horse2.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "horse3.sgriddler.svg",
+    "board": "horse3.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "horse4.sgriddler.svg",
+    "board": "horse4.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "house.sgriddler.svg",
+    "board": "house.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "hurdler.sgriddler.svg",
+    "board": "hurdler.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "huskie.sgriddler.svg",
+    "board": "huskie.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "jaguar.sgriddler.svg",
+    "board": "jaguar.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "jester.sgriddler.svg",
+    "board": "jester.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "kart.sgriddler.svg",
+    "board": "kart.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "katherine.sgriddler.svg",
+    "board": "katherine.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "kittie.sgriddler.svg",
+    "board": "kittie.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "lady.sgriddler.svg",
+    "board": "lady.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "man1.sgriddler.svg",
+    "board": "man1.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "man2.sgriddler.svg",
+    "board": "man2.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "mississippi.sgriddler.svg",
+    "board": "mississippi.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "monkey.sgriddler.svg",
+    "board": "monkey.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "moon1.sgriddler.svg",
+    "board": "moon1.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "moon2.sgriddler.svg",
+    "board": "moon2.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "music.sgriddler.svg",
+    "board": "music.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "mustang.sgriddler.svg",
+    "board": "mustang.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "nicole.sgriddler.svg",
+    "board": "nicole.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "nipper.sgriddler.svg",
+    "board": "nipper.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "ogle.sgriddler.svg",
+    "board": "ogle.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "oldlace.sgriddler.svg",
+    "board": "oldlace.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "oldman.sgriddler.svg",
+    "board": "oldman.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "owl.sgriddler.svg",
+    "board": "owl.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "pacifier.sgriddler.svg",
+    "board": "pacifier.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "pagoda.sgriddler.svg",
+    "board": "pagoda.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "parade.sgriddler.svg",
+    "board": "parade.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "picnic.sgriddler.svg",
+    "board": "picnic.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "pony.sgriddler.svg",
+    "board": "pony.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "puppy2.sgriddler.svg",
+    "board": "puppy2.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "rose1.sgriddler.svg",
+    "board": "rose1.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "rose3.sgriddler.svg",
+    "board": "rose3.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "sail.sgriddler.svg",
+    "board": "sail.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "santa.sgriddler.svg",
+    "board": "santa.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "saracen.sgriddler.svg",
+    "board": "saracen.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "scale.sgriddler.svg",
+    "board": "scale.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "shark.sgriddler.svg",
+    "board": "shark.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "smurf.sgriddler.svg",
+    "board": "smurf.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "snowboarder.sgriddler.svg",
+    "board": "snowboarder.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "superman.sgriddler.svg",
+    "board": "superman.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "teddybear.sgriddler.svg",
+    "board": "teddybear.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "truck.sgriddler.svg",
+    "board": "truck.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "vikingsboat.sgriddler.svg",
+    "board": "vikingsboat.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "waltz.sgriddler.svg",
+    "board": "waltz.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "witch.sgriddler.svg",
+    "board": "witch.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "wolf.sgriddler.svg",
+    "board": "wolf.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "woman1.sgriddler.svg",
+    "board": "woman1.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "woman2.sgriddler.svg",
+    "board": "woman2.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "worker.sgriddler.svg",
+    "board": "worker.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  },
+  {
+    "svg": "zoo.sgriddler.svg",
+    "board": "zoo.sgriddler.board",
+    "creditText": "jsimlo.sk",
+    "creditUrl": "http://jsimlo.sk/griddlers"
+  }
+]

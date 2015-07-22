@@ -1,0 +1,43 @@
+<script type="text/ng-template" id="submitModalContent.html">
+	<div class="modal-header">
+		<h3 class="modal-title">Submit board {{ board.svg }}</h3>
+	</div>
+	<div class="modal-body">
+		<p>Choose algorithm:</p>
+		<div class="radio">
+			<label>
+				<input type="radio" ng-model="strategy.name" value="naive">
+				Naive
+			</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" ng-model="strategy.name" value="naive-probs" checked>
+				Naive Probs
+			</label>
+		</div>
+		<hr/>
+		<p>Strategy options:</p>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" ng-model="strategy.speedy">
+				Speedy?
+			</label>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="submit()">Submit</button>
+		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</script>
+
+<div class="row">
+	<div class="col-xs-6 col-md-2"	ng-repeat="board in boards">
+		<img class="archive-image" ng-attr-src="{{ board.svg }}" ng-click="openSubmitWindow(board)"></img>
+		<div class="archive-credit-text">
+			<span>Credit: </span>
+			<a ng-if="board.creditUrl" href="{{ board.creditUrl }}">{{ board.creditText }}</a>
+			<span ng-if="!board.creditUrl">{{ board.creditText }}</span>
+		</div>
+	</div>
+</div>
