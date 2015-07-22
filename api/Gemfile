@@ -54,4 +54,5 @@ gem 'open4'
 gem 'nokogiri'
 gem 'twitter-bootstrap-rails'
 gem 'google-analytics-turbolinks'
+gem 'aws-sdk', '~> 2'
 
