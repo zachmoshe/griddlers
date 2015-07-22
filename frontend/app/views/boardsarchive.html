@@ -31,16 +31,31 @@
 	</div>
 </script>
 
+
 <div class="row">
 	<div class="col-xs-6 col-md-2"	ng-repeat="board in boards">
+		
 		<div class="archive-board-panel">
 			<div class="archive-board-name">{{ board.name }}</div>
-			<img class="archive-image" ng-attr-src="{{ board.svg }}" ng-click="openSubmitWindow(board)"></img>
+			
+			<img class="archive-image" 
+				ng-attr-src="{{ board.svg }}" 
+				ng-click="openSubmitWindow(board)"
+				ng-if="currentlySubmitting !== board.name"></img>
+
+			<div class="archive-loading-icon archive-image"
+				ng-if="currentlySubmitting === board.name">
+				<span class="glyphicon glyphicon-refresh glyphicon-spin-animate gi-5x"></span>
+			</div>
+
 			<div class="archive-credit-text">
 				<span>Credit: </span>
 				<a ng-if="board.creditUrl" href="{{ board.creditUrl }}">{{ board.creditText }}</a>
 				<span ng-if="!board.creditUrl">{{ board.creditText }}</span>
 			</div>
+
 		</div>
+
+		
 	</div>
 </div>

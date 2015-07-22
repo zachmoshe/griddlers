@@ -9,11 +9,13 @@
  */
 angular.module('griddlersApp')
 	.controller('BoardsArchiveCtrl', function ($scope, BoardsArchiveService, $modal) {
+		// initialize all boards
 		$scope.boards = [];
-
 		BoardsArchiveService.getIndex().then(function(allBoards) { 
 			$scope.boards = allBoards;
 		});
+
+		$scope.currentlySubmitting = null;
 
 		$scope.openSubmitWindow = function (board) {
 			var modalInstance = $modal.open({
@@ -28,8 +30,21 @@ angular.module('griddlersApp')
 			});
 
 			modalInstance.result.then(function (modalResp) {
-				BoardsArchiveService.submitBoard(board, modalResp.strategy, modalResp.requestParams);
-			}, function () {
+				$scope.currentlySubmitting = board.name;
+
+				var submitBoardPromise = BoardsArchiveService.submitBoard(board, modalResp.strategy, modalResp.requestParams);
+
+				submitBoardPromise.then(function() { 
+					$scope.currentlySubmitting = null;
+				})
+				.catch(function(e) { 
+					$scope.currentlySubmitting = null;
+					$modal.open({ 
+						animation: true,
+						template: "Error while submitting job: " + e.message
+					});
+				});
+
 			});
 		};
 	});
