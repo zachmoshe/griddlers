@@ -8,7 +8,7 @@
  * Controller of the griddlersApp
  */
 angular.module('griddlersApp')
-	.controller('BoardsArchiveCtrl', function ($scope, BoardsArchiveService, $modal) {
+	.controller('BoardsArchiveCtrl', function ($scope, BoardsArchiveService, $modal, $location) {
 		// initialize all boards
 		$scope.boards = [];
 		BoardsArchiveService.getIndex().then(function(allBoards) { 
@@ -32,10 +32,10 @@ angular.module('griddlersApp')
 			modalInstance.result.then(function (modalResp) {
 				$scope.currentlySubmitting = board.name;
 
-				var submitBoardPromise = BoardsArchiveService.submitBoard(board, modalResp.strategy, modalResp.requestParams);
-
-				submitBoardPromise.then(function() { 
+				BoardsArchiveService.submitBoard(board, modalResp.strategy, modalResp.requestParams)
+				.then(function(workId) { 
 					$scope.currentlySubmitting = null;
+					$location.path('/board/' + workId );
 				})
 				.catch(function(e) { 
 					$scope.currentlySubmitting = null;

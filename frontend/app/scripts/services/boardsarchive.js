@@ -46,16 +46,16 @@
 					Key: s3Key,
 					Body: JSON.stringify(strategy) + "\n" + JSON.stringify(requestParams) + "\n" + JSON.stringify(board)
 				}).then(function(s3Resp) { 
-					return { Bucket: s3Bucket, Key: s3Key };
+					return { s3Location: { Bucket: s3Bucket, Key: s3Key }, workId: workId };
 				});
 			})
-		.then(function(s3Location) { 
+		.then(function(resp) { 
 				// Send a message to SQS
 				return SQS.sendMessageAsync({ 
 					QueueUrl: window.griddlersConfig.sqsWorkQueueUrl,
-					MessageBody: JSON.stringify(s3Location)
+					MessageBody: JSON.stringify(resp.s3Location)
 				}).then(function() { 
-					return true;
+					return resp.workId;
 				});
 			});
 
