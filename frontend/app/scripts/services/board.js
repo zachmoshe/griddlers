@@ -10,32 +10,48 @@
  * Service in the griddlersApp.
  */
 angular.module('griddlersApp')
-	.service('BoardService', function () {
+	.service('BoardService', function ($timeout) {
 		var S3 = new AWS.S3();
+		Promise.promisifyAll(Object.getPrototypeOf(S3));
+ 	
+		var RESPONSE_BETWEEN_POLLS_MS = 1000 * 60; // 1 minute
 
-		this.loadWorkResults = function(workID, callback) { 
-			S3.getObject({ 
-				Bucket: window.griddlersConfig.s3WorkBucket,
-				Key: workID + '/results.json'
-			}, function(err, data) { 
-				if (err) { 
-					if (err.code === 'NoSuchKey') { 
-						callback("No such key " + workID);
-					} else { 
-						callback(err.message);
-					}
+ 		function getRequestS3Location(workId) { 
+ 			return { Bucket: window.griddlersConfig.s3WorkBucket, Key: workId + '/request' }
+ 		}
+ 		function getResponseS3Location(workId) { 
+ 			return { Bucket: window.griddlersConfig.s3WorkBucket, Key: workId + '/response' }
+ 		}
 
-				} else { 
-					try { 
-						var obj = JSON.parse(data.Body);
-						callback(null, obj);
-					} catch (e) { 
-						callback(e);
-					}
+
+		this.waitForWork = function(workId, statusUpdateCallback) { 
+			return S3.headObjectAsync( getRequestS3Location(workId) )
+			.then(function(resp) { 
+
+				function getResponse(workId) { 
+					return S3.getObjectAsync( getResponseS3Location(workId) )
+					.catch(function(err) { 
+						statusUpdateCallback("WAITING");
+						return Promise.delay(RESPONSE_BETWEEN_POLLS_MS).then(function() { 
+							return getResponse(workId);
+						});
+					});
+				}
+
+				// check if response is there and wait if it isn't 
+				return getResponse(workId);
+			})
+			.then(function(resp) { 
+				return JSON.parse(resp.Body).iterations;
+			})
+			.catch(function(ex) { 
+				if (ex.code === 'NotFound') { 
+					throw "Illegal work ID";
+				} else {
+					throw ex;
 				}
 			});
+			
 		};
 
-
-			
 	});

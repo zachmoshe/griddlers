@@ -14,9 +14,8 @@ Chart.defaults.global.scaleBeginAtZero = true;
  */
 
 angular.module('griddlersApp')
-	.controller('BoardPanelCtrl', [ '$scope', 'BoardService', function ($scope, boardSvc) {
-		var iterations = null;
-		var currentIter = 0;
+	.controller('BoardPanelCtrl', function ($scope, $routeParams, BoardService) {
+		$scope.workLoadingStatus = {};
 		$scope.chart = {
 			dataSeries: [ [], [] ],
 			labels: [],
@@ -26,19 +25,14 @@ angular.module('griddlersApp')
 			},
 			colors: [ '#FF4444', '#44FF44', '#4444FF' ]
 		};
-		$scope.isBoardLoading = false;
 
-		var setIterations = function(iters) {
-			iterations = iters;
-			currentIter = 0;
-			$scope.iter = iterations[currentIter];
+		var iterations = null;
+		var currentIter = 0;
 
-			$scope.chart.dataSeries = [ 
-				iters.map(function(iter) { return iter.stats.pct_certain.toFixed(2); }),
-				iters.map(function(iter) { return iter.stats.avg_change.toFixed(2); }),
-			];
-			$scope.chart.labels = iters.map(function(iter) { return 'Iter #' + iter.iteration_number; });
-		};
+
+		setWorkId($routeParams.id);
+
+
 
 		$scope.nextIter = function() { 
 			currentIter = Math.min(iterations.length - 1, currentIter + 1);
@@ -59,21 +53,41 @@ angular.module('griddlersApp')
 		};
 
 
-		$scope.setWorkId = function(workId) { 
+		function setIterations(iters) {
+			iterations = iters;
+			currentIter = 0;
+			$scope.iter = iterations[currentIter];
+
+			$scope.chart.dataSeries = [ 
+				iters.map(function(iter) { return iter.stats.pct_certain.toFixed(2); }),
+				iters.map(function(iter) { return iter.stats.avg_change.toFixed(2); }),
+			];
+			$scope.chart.labels = iters.map(function(iter) { return 'Iter #' + iter.iteration_number; });
+		};
+
+		function setWorkId(workId) { 
 			iterations = null;
-			$scope.isBoardLoading = true;
-			boardSvc.loadWorkResults(workId, function(err, data) { 
-				if (err) { 
-					$scope.isBoardLoading = false;
-					console.error("Error while loading workId " + workId + " : " + err); 
-				} else { 
-					$scope.$evalAsync(function() { 
-						$scope.isBoardLoading = false;
-						setIterations(data);
-					});
-				}
+			$scope.workLoadingStatus = { status: 'LOADING', message: 'Loading your board processing request' };
+
+			BoardService.waitForWork(workId, function(statusUpdate) { 
+				$scope.$evalAsync(function() { 
+					if (statusUpdate === 'WAITING') { 
+						$scope.workLoadingStatus = { status: 'WAITING', message: 'Waiting for an available worker to solve your board' };
+					}
+				});
+			})
+			.then(function(data) { 
+				$scope.$evalAsync(function() { 
+					$scope.workLoadingStatus = { status: 'DONE' };
+					setIterations(data);
+				});
+			})
+			.catch(function(err) { 
+				$scope.$evalAsync(function() { 
+					$scope.workLoadingStatus = { status: 'ERROR', message: err };
+				});
 			});
 		};
 
-
-	}]);
+			
+	});

@@ -1,19 +1,21 @@
-<!-- Main board panel with charts and the grid itself -->
-<button class="btn btn-primary" ng-click="setWorkId(1)">Load workId 1</button>
-<button class="btn btn-primary" ng-click="setWorkId(2)">Load workId 2</button>
-
-<div class="row" >
+<div class="row">
 		
-	<!-- Loading icon -->
-	<div class="col-xs-12" ng-if="isBoardLoading">
+	<!-- Loading panel -->
+	<div class="col-xs-12" ng-if="workLoadingStatus.status!=='DONE'">
 		<div class="board-loading-icon">
-			<span class="glyphicon glyphicon-refresh glyphicon-spin-animate gi-5x"></span>
+			<span class="glyphicon gi-5x"
+				ng-class="{ 'glyphicon-refresh glyphicon-spin-animate': (workLoadingStatus.status==='LOADING'), 'glyphicon-time glyphicon-blink-animate': (workLoadingStatus.status==='WAITING'), 'glyphicon-exclamation-sign': (workLoadingStatus.status==='ERROR') }"
+			></span>
+		</div>
+		<div class="board-panel-status-text text-center"
+			ng-class="{ 'text-primary': (workLoadingStatus.status==='LOADING' || workLoadingStatus.status==='WAITING'), 'text-danger': (workLoadingStatus.status==='ERROR') }">
+			{{ workLoadingStatus.message }}
 		</div>
 	</div>
 
 
 	<!-- Grid plus prev/next buttons and progress bar -->
-	<div class="col-xs-12 col-md-4 col-md-offset-4 text-center" ng-if="iterationsReady()">
+	<div class="col-xs-12  text-center" ng-if="workLoadingStatus.status==='DONE'">
 		<div class="board-panel-grid-buttons">
 			<!-- grid -->
 			<board-grid board="iter.board"></board-grid>
