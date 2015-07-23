@@ -14,7 +14,7 @@ Chart.defaults.global.scaleBeginAtZero = true;
  */
 
 angular.module('griddlersApp')
-	.controller('BoardPanelCtrl', function ($scope, $routeParams, BoardService) {
+	.controller('BoardPanelCtrl', function ($scope, $routeParams, $interval, BoardService) {
 		$scope.workLoadingStatus = {};
 		$scope.chart = {
 			dataSeries: [ [], [] ],
@@ -28,7 +28,7 @@ angular.module('griddlersApp')
 
 		var iterations = null;
 		var currentIter = 0;
-
+		var playPromise;
 
 		setWorkId($routeParams.id);
 
@@ -41,6 +41,14 @@ angular.module('griddlersApp')
 		$scope.prevIter = function() { 
 			currentIter = Math.max(0, currentIter - 1);
 			$scope.iter = iterations[currentIter];
+		};
+		$scope.play = function() { 
+			playPromise = $interval(function() { 
+				$scope.nextIter();
+				if (currentIter+1 >= iterations.length) { 
+					$interval.cancel(playPromise);
+				}
+			}, 500);
 		};
 
 		$scope.iterPct = function() { 

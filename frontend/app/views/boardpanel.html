@@ -24,7 +24,7 @@
 			<div>
 				<div class="btn btn-sm btn-primary pull-left" ng-click="prevIter()"><span class="glyphicon glyphicon-chevron-left"></span></div>
 				<div class="btn btn-sm btn-primary pull-right" ng-click="nextIter()"><span class="glyphicon glyphicon-chevron-right"></span></div>
-				<div class="btn btn-sm btn-primary pull-right"><span class="glyphicon glyphicon-play"></span></div>
+				<div class="btn btn-sm btn-primary pull-right" ng-click="play()"><span class="glyphicon glyphicon-play"></span></div>
 
 				<div class="progress board-progressbar">
 					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ iterPct() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ iterPct() }}%;">
