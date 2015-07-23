@@ -12,7 +12,12 @@ class GriddlersSolverWorker
 
 	def poll
 		poller.poll(skip_delete: true) do |msg|
-			handle_message msg
+			begin 
+				handle_message msg
+			rescue ex
+				logger.error "Error while handling message", ex
+			end
+
 			poller.delete_message msg
 		end
 	end
@@ -23,6 +28,7 @@ class GriddlersSolverWorker
 		s3Location = JSON.parse msg.body
 		bucket, key = s3Location['Bucket'], s3Location['Key']
 		work_id = key.split('/')[0]
+		logger.info "handling workId: #{work_id}"
 
 		request = s3.get_object( bucket: bucket, key: key).body.read
 		strategy, request_params, board = request.split("\n")
@@ -61,7 +67,7 @@ class GriddlersSolverWorker
 			output = { 'status' => 'fatal-error', 'message' => ex.message }
 		end
 
-		logger.info "Response for #{work_id} is #{output}"
+		logger.info "Uploading response for #{work_id} to #{bucket}"
 		s3.put_object( bucket: bucket, key: "#{work_id}/response", body: output.to_json )
 		puts "Done"
 	end
