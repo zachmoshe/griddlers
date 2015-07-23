@@ -11,16 +11,15 @@ class GriddlersSolverWorker
 	end  
 
 	def poll
-		poller.poll do |msg|
+		poller.poll(skip_delete: true) do |msg|
 			handle_message msg
+			poller.delete_message msg
 		end
 	end
 
 
 	protected
 	def handle_message(msg)
-		msg = Struct.new(:body).new( {"Bucket" => "dev-griddlers-work", "Key" => "0925c54244a5202b/request"}.to_json )
-
 		s3Location = JSON.parse msg.body
 		bucket, key = s3Location['Bucket'], s3Location['Key']
 		work_id = key.split('/')[0]
