@@ -13,7 +13,8 @@ namespace :worker do
 
 
     queue_url = ENV['SQS_WORK_QUEUE_URL']
-    GriddlersSolverWorker.new(queue_url).poll
+    new_work_topic_arn = ENV['SNS_NEW_WORK_TOPIC_ARN']
+    GriddlersSolverWorker.new(queue_url, new_work_topic_arn).poll
     
   end
 

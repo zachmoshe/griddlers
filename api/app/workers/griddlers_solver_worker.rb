@@ -1,16 +1,20 @@
 class GriddlersSolverWorker
-	attr_accessor :queue_url
-	attr_reader :poller, :s3, :logger
+	attr_reader :queue_url, :new_work_topic_arn, :poller, :s3, :sns, :logger
 
-	def initialize(sqs_queue_url)
+	def initialize(sqs_queue_url, new_work_topic_arn)
 		raise ArgumentError, "invalid SQS queue URL" unless sqs_queue_url
 		@queue_url = sqs_queue_url
+		@new_work_topic_arn = new_work_topic_arn
+
 		@poller = Aws::SQS::QueuePoller.new(queue_url)
 		@s3 = Aws::S3::Client.new
+		@sns = Aws::SNS::Client.new 
+		Rails.logger = Logger.new STDOUT
 		@logger = Rails.logger
 	end  
 
 	def poll
+		handle_message(nil)
 		# visibility_timeout = 4 hours, idle_timeout = 10 minutes
 		poller.poll(visibility_timeout: 4*60*60, idle_timeout: 10*60) do |msg|
 			begin 
@@ -29,9 +33,38 @@ class GriddlersSolverWorker
 
 
 	protected
+	def periodically_check_termination_time
+		loop do
+			sleep(5)
+			resp = Net::HTTP.get_response URI.parse('http://169.254.169.254/latest/meta-data/spot/termination-time')
+
+			if resp == 404
+				logger.debug "Checking if we were terminated... not yet."
+			else 
+				logger.debug "Checking if we were terminated... YES! Termination scheduled"
+				return
+			end
+		end
+	end
+
+
+
 	def handle_message(msg)
 		s3Location = JSON.parse(JSON.parse(msg.body)['Message'])
 		logger.info "got S3 location: #{s3Location}"
+
+		should_upload = true
+		termination_check_thread = Thread.new do
+			# this will return if termination was enforced (with ~2 minutes warning)
+			periodically_check_termination_time
+			logger.debug "should terminate. setting should_upload to false"
+			should_upload = false
+			logger.info "submitting #{s3Location} to new-work-queue again"
+			sns.publish topic_arn: new_work_topic_arn, message: s3Location.to_json
+			logger.info "work re-submitted to queue"
+		end
+
+
 		bucket, key = s3Location['Bucket'], s3Location['Key']
 		work_id = key.split('/')[0]
 		logger.info "handling workId: #{work_id}"
@@ -49,6 +82,7 @@ class GriddlersSolverWorker
 		begin
 			status = Open4::popen4("ulimit -v 400000 && #{core_path}/env/bin/python #{core_path}/bin/board_solver.py") do |pid, stdin, stdout, stderr|
 				logger.info "Starting board_solver.py for request #{work_id} [PID=#{pid}]"
+				sleep(10)
 
 				stdin.puts(strategy)
 				stdin.puts(request_params)
@@ -73,8 +107,15 @@ class GriddlersSolverWorker
 			output = { 'status' => 'fatal-error', 'message' => ex.message }
 		end
 
-		logger.info "Uploading response for #{work_id} to #{bucket}"
-		s3.put_object( bucket: bucket, key: "#{work_id}/response", body: output.to_json )
+		logger.debug "should_upload is #{should_upload}"
+
+		if should_upload
+			logger.info "Uploading response for #{work_id} to #{bucket}"
+			s3.put_object( bucket: bucket, key: "#{work_id}/response", body: output.to_json )
+		end
+
+		termination_check_thread.raise 'stop:work_done'
+
 		logger.info "Done"
 	end
 
