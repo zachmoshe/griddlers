@@ -11,21 +11,27 @@ class GriddlersSolverWorker
 	end  
 
 	def poll
-		poller.poll(skip_delete: true) do |msg|
+		# visibility_timeout = 4 hours, idle_timeout = 10 minutes
+		poller.poll(visibility_timeout: 4*60*60, idle_timeout: 10*60) do |msg|
 			begin 
+				logger.info "waiting for message..."
 				handle_message msg
-			rescue ex
-				logger.error "Error while handling message", ex
-			end
 
-			poller.delete_message msg
+			rescue Exception => ex
+				logger.error "Error while handling message: #{ex.message}"
+				logger.error ex.backtrace.join "\n"
+				poller.change_message_visibility_timeout msg, 5  # return message to the queue (almost) immediately
+				throw :skip_delete
+			end
 		end
+		logger.info "Idle timeout passed. Quitting"
 	end
 
 
 	protected
 	def handle_message(msg)
-		s3Location = JSON.parse msg.body
+		s3Location = JSON.parse(JSON.parse(msg.body)['Message'])
+		logger.info "got S3 location: #{s3Location}"
 		bucket, key = s3Location['Bucket'], s3Location['Key']
 		work_id = key.split('/')[0]
 		logger.info "handling workId: #{work_id}"
@@ -69,7 +75,7 @@ class GriddlersSolverWorker
 
 		logger.info "Uploading response for #{work_id} to #{bucket}"
 		s3.put_object( bucket: bucket, key: "#{work_id}/response", body: output.to_json )
-		puts "Done"
+		logger.info "Done"
 	end
 
 
