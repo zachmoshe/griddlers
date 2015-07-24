@@ -3,12 +3,15 @@
 require 'aws-sdk'
 require_relative 'griddlers_solver_worker'
 
-sts = Aws::STS::Client.new( credentials: Aws::SharedCredentials.new( profile_name: 'admin' ) )
-
-creds = Aws::AssumeRoleCredentials.new \
-  client: sts,
-  role_arn: 'arn:aws:iam::591152932423:role/dev_griddlers_worker',
-  role_session_name: 'zach'
+if ENV['GRIDDLERS_WORKER_DEVELOPMENT']
+  sts = Aws::STS::Client.new( credentials: Aws::SharedCredentials.new( profile_name: 'admin' ) )
+  creds = Aws::AssumeRoleCredentials.new \
+    client: sts,
+    role_arn: 'arn:aws:iam::591152932423:role/dev_griddlers_worker',
+    role_session_name: 'zach'
+else 
+  creds = Aws::InstanceProfileCredentials.new
+end
 
 Aws.config[:credentials] = creds
 
