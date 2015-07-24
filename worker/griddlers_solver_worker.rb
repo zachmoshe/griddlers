@@ -40,7 +40,7 @@ class GriddlersSolverWorker
       begin
         resp = Net::HTTP.get_response URI.parse('http://169.254.169.254/latest/meta-data/spot/termination-time')
 
-        if resp.code == 404
+        if resp.code == '404'
           logger.debug "Checking if we were terminated... not yet."
         else 
           logger.debug "Checking if we were terminated... YES! Termination scheduled"
