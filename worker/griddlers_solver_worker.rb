@@ -40,7 +40,7 @@ class GriddlersSolverWorker
       begin
         resp = Net::HTTP.get_response URI.parse('http://169.254.169.254/latest/meta-data/spot/termination-time')
 
-        if resp == 404
+        if resp.code == 404
           logger.debug "Checking if we were terminated... not yet."
         else 
           logger.debug "Checking if we were terminated... YES! Termination scheduled"
@@ -85,7 +85,7 @@ class GriddlersSolverWorker
 
     core_path = "#{File.dirname(__FILE__)}/../core"
     begin
-      status = Open4::popen4("ulimit -v 400000 && #{core_path}/env/bin/python #{core_path}/bin/board_solver.py") do |pid, stdin, stdout, stderr|
+      status = Open4::popen4("#{core_path}/env/bin/python #{core_path}/bin/board_solver.py") do |pid, stdin, stdout, stderr|
         logger.info "Starting board_solver.py for request #{work_id} [PID=#{pid}]"
         sleep(10)
 
