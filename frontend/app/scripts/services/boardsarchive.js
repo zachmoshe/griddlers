@@ -15,9 +15,9 @@
  angular.module('griddlersApp')
  .service('BoardsArchiveService', function ($http) {
  	var S3 = new AWS.S3();
- 	var SQS = new AWS.SQS();
+ 	var SNS = new AWS.SNS({ params: { TopicArn: window.griddlersConfig.snsNewWorkTopicArn } });
  	Promise.promisifyAll(Object.getPrototypeOf(S3));
- 	Promise.promisifyAll(Object.getPrototypeOf(SQS));
+ 	Promise.promisifyAll(Object.getPrototypeOf(SNS));
 
 
  	this.getIndex = function() { 
@@ -51,9 +51,8 @@
 			})
 		.then(function(resp) { 
 				// Send a message to SQS
-				return SQS.sendMessageAsync({ 
-					QueueUrl: window.griddlersConfig.sqsWorkQueueUrl,
-					MessageBody: JSON.stringify(resp.s3Location)
+				return SNS.publishAsync({ 
+					Message: JSON.stringify(resp.s3Location)
 				}).then(function() { 
 					return resp.workId;
 				});
