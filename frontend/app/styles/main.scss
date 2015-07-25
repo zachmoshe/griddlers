@@ -4,91 +4,85 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 .browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
 }
 
 body {
-  padding: 0;
+	padding: 0;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
+	/* Make the masthead heading the same height as the navigation */
+	h3 {
+		margin-top: 0;
+		margin-bottom: 0;
+		line-height: 40px;
+		padding-bottom: 19px;
+	}
 }
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+	padding-top: 19px;
+	color: #777;
+	border-top: 1px solid #e5e5e5;
 }
 
 .container-narrow > hr {
-  margin: 30px 0;
+	margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
 .jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+	text-align: center;
+	border-bottom: 1px solid #e5e5e5;
 
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
+	.btn {
+		font-size: 21px;
+		padding: 14px 24px;
+	}
 }
 
 /* Supporting marketing content */
 .marketing {
-  margin: 40px 0;
+	margin: 40px 0;
 
-  p + h4 {
-    margin-top: 28px;
-  }
+	p + h4 {
+		margin-top: 28px;
+	}
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+	.container {
+		max-width: 730px;
+	}
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+	/* Remove the padding we set earlier */
+	.header,
+	.marketing,
+	.footer {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	/* Remove the bottom border on the jumbotron for visual effect */
+	.jumbotron {
+		border-bottom: 0;
+	}
 }
+
 
 
 /* Glyphicons sizes */
@@ -99,27 +93,149 @@ body {
 
 /* Glyphicons spin animation */
 .glyphicon-spin-animate {
-    -animation: spin2 1.5s infinite linear;
-    -webkit-animation: spin2 1.5s infinite linear;
+	-animation: spin2 1.5s infinite linear;
+	-webkit-animation: spin2 1.5s infinite linear;
 }
 @-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg);}
-    to { -webkit-transform: rotate(360deg);}
+	from { -webkit-transform: rotate(0deg);}
+	to { -webkit-transform: rotate(360deg);}
 }
 
 
 /* blink animation */
 .glyphicon-blink-animate { 
-  -animation: blink 1s infinite cubic-bezier(0.78, 0.02, 0.58, 1);
-  -webkit-animation: blink 2s infinite cubic-bezier(0.78, 0.02, 0.58, 1);
+	-animation: blink 1s infinite cubic-bezier(0.78, 0.02, 0.58, 1);
+	-webkit-animation: blink 2s infinite cubic-bezier(0.78, 0.02, 0.58, 1);
 }
 @-webkit-keyframes blink {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
+	0% { opacity: 0; }
+	50% { opacity: 1; }
+	100% { opacity: 0; }
 }
 
 
 
+/* main screen (index.html and main.html) styles */
+html { 
+	background:url('/images/dojo-background.jpg') no-repeat center center fixed;
+	min-height:100%;
+	background-size:cover;
+}
+body { 
+	min-height: 100%;
+	background-color: transparent;
+	font-family: 'Roboto', sans-serif;
+}
+.header { 
+	padding: 2em 1em 1em 0em;
+}
+.header-logo { 
+	background-image: url(/images/logo.png);
+	width: 6em;
+	height: 6em;
+	background-size: contain;
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.header-title { 
+	font-size: 3em;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+.header-title-1st {
+	font-family: 'Shojumaru', cursive;
+	color: white;
+	text-shadow: -1px -1px 0 rgba(0,0,0,1), -1px 1px 0 rgba(0,0,0,1),1px -1px 0 rgba(0,0,0,1),1px 1px 0 rgba(0,0,0,1), 0px 0px 25px rgba(255, 255, 255, 0.5);
+}
+.header-title-2nd { 
+	color: rgb(255, 107, 0);
+	position: relative;
+	bottom: 0.85em;
+	margin-bottom: -0.85em;
+	left: 0.7em;
+	-webkit-transform: rotate(-5deg);
+	transform: rotate(-6deg);
+	font-family: 'Shojumaru', cursive;
+	text-shadow: -1px -1px 0 rgba(0,0,0,0.5), -1px 1px 0 rgba(0,0,0,0.5),1px -1px 0 rgba(0,0,0,0.5),1px 1px 0 rgba(0,0,0,0.5), 0px 0px 15px rgba(255,255,255, 0.4);
+}
 
 
+.personal-pages-container { 
+	flex-direction: column;
+	display: flex;
+	flex-wrap: wrap-reverse;
+	justify-content: space-between;
+	align-content: flex-start;
+	height: 6.5em;
+	width: 6em;
+	margin-top: -0.25em;
+	margin-right: 0.5em;
+}
+
+.personal-page-link { 
+	margin-right: 0.5em;
+	margin-bottom: 0.05em;
+}
+.personal-page-link i { 
+	font-size: 1.9em;
+	text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.5), -1px 1px 1px rgba(255, 255, 255, 0.5), 1px -1px 1px rgba(255, 255, 255, 0.5), 1px 1px 1px rgba(255, 255, 255, 0.5), 0px 0px 10px white;
+}
+
+.ppl-facebook { 
+	color: #3b5998;
+}
+.ppl-linkedin {
+	color: #007bb6;
+}
+.ppl-github {
+	color: #333;
+}
+.ppl-stackoverflow {
+	color: #ED9020;
+}
+.ppl-email {
+	color: black;
+}
+
+.zachmoshe-image { 
+	background-image: url(/images/zachmoshe.jpg);
+	width: 6em;
+	height: 6em;
+	background-size: contain;
+	background-repeat: no-repeat;
+	display: inline-block;
+	box-shadow: -1px -1px 1px rgba(255, 255, 255, 0.5), -1px 1px 1px rgba(255, 255, 255, 0.5), 1px -1px 1px rgba(255, 255, 255, 0.5), 1px 1px 1px rgba(255, 255, 255, 0.5), 0px 0px 20px white;
+}
+
+.links-container { 
+	flex-direction: row;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	line-height: 100%;
+  margin-right: 1em;
+}
+
+.link-item {
+	font-size: 5em;	
+	color: white;
+
+}
+
+.main-title { 
+	margin-top: 0px;
+}
+h1.main-title { 
+	text-align: center;
+	color: rgb(255, 107, 0);
+	text-shadow: 0px 0px 0px black, 0px 0px 5px black;
+}
+h2.main-title { 
+	text-align: justify;
+	color: white;
+	text-shadow: 0px 0px 0px black, 0px 0px 5px black;
+}

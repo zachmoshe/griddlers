@@ -1,75 +1,118 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/boardpanel.css">
-    <link rel="stylesheet" href="styles/boardgrid.css">
-    <link rel="stylesheet" href="styles/boardsarchive.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="griddlersApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css(.) styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/boardpanel.css">
+	<link rel="stylesheet" href="styles/boardgrid.css">
+	<link rel="stylesheet" href="styles/boardsarchive.css">
+	<!-- endbuild -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Shojumaru&subset=latin,latin-ext'>
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Roboto:500,400'>
+</head>
+<body ng-app="griddlersApp" class="body">
+	<!--[if lte IE 8]>
+	  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	  <![endif]-->
 
-    <!-- Add your site or application content here -->
+	  <!-- Add your site or application content here -->
 
-    <div class="container-fluid">
-      <div ng-view=""></div>
-    </div>
+	  <div class="container-fluid">
+	  	<!-- first row with Logo and menu -->
+	  	<div class="row header">
+	  		<div class="col-xs-12 col-sm-6">
+	  			<div class="header-logo"></div>
+	  			<div class="header-title">
+	  				<span class="header-title-1st">Griddlers</span>
+	  				<span class="header-title-2nd">Ninja!</span>
+	  			</div>
+	  		</div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  		<div class="col-xs-12 col-sm-6">
+	  			<a href="http://www.zachmoshe.com" class="pull-right">
+	  				<div class="zachmoshe-image"></div>
+	  			</a>
+	  			<div class="personal-pages-container pull-right">
+	  				<a class="personal-page-link ppl-facebook" href="http://www.facebook.com/zach.moshe">
+	  					<i class="fa fa-facebook-official"></i>
+	  				</a>
+	  				<a class="personal-page-link ppl-github" href="http://github.com/zachmoshe">
+	  					<i class="fa fa-github-square"></i>
+	  				</a>
+	  				<a class="personal-page-link ppl-linkedin" href="http://www.linkedin.com/profile/view?id=8617275">
+	  					<i class="fa fa-linkedin-square"></i>
+	  				</a>
+	  				<a class="personal-page-link ppl-stackoverflow" href="http://stackoverflow.com/users/1643257/zach-moshe">
+	  					<i class="fa fa-stack-overflow"></i>
+	  				</a>
+	  				<a class="personal-page-link ppl-email" href="mailto:zachmoshe@gmail.com">
+	  					<i class="fa fa-envelope"></i>
+	  				</a>
+	  			</div>
+	  			<div class="links-container pull-right">
+	  				<a class="link-item" href="/about">
+	  					<i class="fa fa-question-circle"></i>
+	  				</a>
+	  			</div>
+	  		</div>
+	  	</div>
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+	  	<!-- content. based on route -->
+ 		<div ng-view=""></div>
+	  </div>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/Chart.js/Chart.js"></script>
-    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
-    <script src="bower_components/aws-sdk/dist/aws-sdk.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/cryptojslib/rollups/sha256.js"></script>
-    <script src="bower_components/bluebird/js/browser/bluebird.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+	  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+	  <script>
+	  	!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+	  		(A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+	  		r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+	  	}(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/config.js"></script>
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/boardpanel.js"></script>
-        <script src="scripts/controllers/boardsarchive.js"></script>
-        <script src="scripts/filters/percentage.js"></script>
-        <script src="scripts/services/board.js"></script>
-        <script src="scripts/services/boardsarchive.js"></script>
-        <script src="scripts/directives/boardgrid.js"></script>
-        <!-- endbuild -->
-</body>
-</html>
+	  	ga('create', 'UA-XXXXX-X');
+	  	ga('send', 'pageview');
+	  </script>
+
+	  <!-- build:js(.) scripts/vendor.js -->
+	  <!-- bower:js -->
+	  <script src="bower_components/jquery/dist/jquery.js"></script>
+	  <script src="bower_components/angular/angular.js"></script>
+	  <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+	  <script src="bower_components/angular-animate/angular-animate.js"></script>
+	  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+	  <script src="bower_components/angular-resource/angular-resource.js"></script>
+	  <script src="bower_components/angular-route/angular-route.js"></script>
+	  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	  <script src="bower_components/angular-touch/angular-touch.js"></script>
+	  <script src="bower_components/Chart.js/Chart.js"></script>
+	  <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+	  <script src="bower_components/aws-sdk/dist/aws-sdk.js"></script>
+	  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	  <script src="bower_components/cryptojslib/rollups/sha256.js"></script>
+	  <script src="bower_components/bluebird/js/browser/bluebird.js"></script>
+	  <!-- endbower -->
+	  <!-- endbuild -->
+
+	  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+	  <script src="scripts/config.js"></script>
+	  <script src="scripts/app.js"></script>
+	  <script src="scripts/controllers/main.js"></script>
+	  <script src="scripts/controllers/boardpanel.js"></script>
+	  <script src="scripts/controllers/boardsarchive.js"></script>
+	  <script src="scripts/filters/percentage.js"></script>
+	  <script src="scripts/services/board.js"></script>
+	  <script src="scripts/services/boardsarchive.js"></script>
+	  <script src="scripts/directives/boardgrid.js"></script>
+	  <!-- endbuild -->
+	</body>
+	</html>
