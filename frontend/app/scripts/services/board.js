@@ -42,7 +42,12 @@ angular.module('griddlersApp')
 				return getResponse(workId);
 			})
 			.then(function(resp) { 
-				return JSON.parse(resp.Body).iterations;
+				var resp_body = JSON.parse(resp.Body);
+				if (resp_body.status == "success") { 
+					return resp_body.iterations;
+				} else {
+					throw resp_body.status + ": " + resp_body.message;
+				}
 			})
 			.catch(function(ex) { 
 				if (ex.code === 'NotFound') { 
