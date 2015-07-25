@@ -106,12 +106,15 @@ class GriddlersSolverWorker
         # handle fatal errors (where we couldn't even run the solver script in a similar way to "regular" errors)
         error_message = error.split(/[:\n]/).last.strip
         logger.error "Fatal error: #{error_message}"
-        logger.error error
+        logger.error "STDOUT - #{output}"
+        logger.error "STDERR - #{error}"
         output = { 'status' => 'fatal-error', 'message' => error_message }
       end
 
     rescue Exception => ex
       logger.error "Fatal error: #{ex.message}"
+      logger.error "STDOUT - #{output}"
+      logger.error "STDERR - #{error}"
       logger.error ex.backtrace.join "\n"
       output = { 'status' => 'fatal-error', 'message' => ex.message }
     end
