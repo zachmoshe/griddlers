@@ -1,6 +1,6 @@
 <script type="text/ng-template" id="submitModalContent.html">
 	<div class="modal-header">
-		<h3 class="modal-title">Submit board {{ board.name }}</h3>
+		<h3 class="modal-title">Submit board: {{ board.name }}</h3>
 	</div>
 	<div class="modal-body">
 		<p>Choose algorithm:</p>
@@ -31,6 +31,21 @@
 	</div>
 </script>
 
+
+<div class="row">
+	<div class="col-xs-12 text-center">
+		<h1>Boards Archive</h1>
+		<article>
+			<p>
+				Here you can find some boards that someone else had solved (that's why you can see the image) and submit them to the Ninja's queue. The board might already be solved, but the probabilities visualisation is unique to the Ninja!
+			</p>
+			<p>
+				Depending on the board's size, the solving process might take some time. Since I don't constantly run a server anymore, it will take even longer
+				as AWS needs to spin a machine for me. And if that wasn't enough, I use <a href="http://aws.amazon.com/ec2/purchasing-options/spot-instances/">spot instances</a>, so if there is high demand, my server won't start at all. But don't let that break your spirit - go ahead and submit a board!
+			</p>
+		</article>
+	</div>
+</div>
 
 <div class="row">
 	<div class="col-xs-6 col-md-2"	ng-repeat="board in boards">

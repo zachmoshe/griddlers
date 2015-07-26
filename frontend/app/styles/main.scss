@@ -2,6 +2,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
+@import "variables";
 
 .browsehappy {
 	margin: 0.2em 0;
@@ -156,7 +157,7 @@ body {
 	text-shadow: -1px -1px 0 rgba(0,0,0,1), -1px 1px 0 rgba(0,0,0,1),1px -1px 0 rgba(0,0,0,1),1px 1px 0 rgba(0,0,0,1), 0px 0px 25px rgba(255, 255, 255, 0.5);
 }
 .header-title-2nd { 
-	color: rgb(255, 107, 0);
+	color: $orange;
 	position: relative;
 	bottom: 0.85em;
 	margin-bottom: -0.85em;
@@ -233,13 +234,13 @@ body {
 .main-title { 
 	margin-top: 0px;
 }
-h1.main-title { 
+h1 { 
 	text-align: center;
-	color: rgb(255, 107, 0);
+	color: $orange;
 	text-shadow: 0px 0px 1px white, 0px 0px 2px white
 }
-h2.main-title { 
-	text-align: justify;
+h2 { 
+	text-align: left;
 	color: white;
 	text-shadow: 0px 0px 0px black, 0px 0px 5px black;
 }
