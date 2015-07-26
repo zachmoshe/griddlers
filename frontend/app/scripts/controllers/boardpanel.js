@@ -3,7 +3,7 @@
 /*globals Chart */
 
 Chart.defaults.global.scaleBeginAtZero = true;
-
+Chart.defaults.global.scaleFontColor = "#FFF";
 
 /**
  * @ngdoc function
@@ -22,6 +22,8 @@ angular.module('griddlersApp')
 			series: [ '% Certain', 'Avg Change' ],
 			options: {
 				bezierCurveTension: 0.1,
+				legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li style=\"color: white; text-shadow: 0px 0px 3px black\"><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
 			},
 			colors: [ '#FF4444', '#44FF44', '#4444FF' ]
 		};
