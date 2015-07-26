@@ -8,7 +8,7 @@
 			></span>
 		</div>
 		<div class="board-panel-status-text text-center"
-		ng-class="{ 'text-primary': (workLoadingStatus.status==='LOADING' || workLoadingStatus.status==='WAITING'), 'text-danger': (workLoadingStatus.status==='ERROR') }">
+		ng-class="{ 'text-ok': (workLoadingStatus.status==='LOADING' || workLoadingStatus.status==='WAITING'), 'text-error': (workLoadingStatus.status==='ERROR') }">
 		{{ workLoadingStatus.message }}
 	</div>
 </div>
