@@ -1,55 +1,50 @@
 <div class="row">
-		
+	
 	<!-- Loading panel -->
 	<div class="col-xs-12" ng-if="workLoadingStatus.status!=='DONE'">
 		<div class="board-loading-icon">
 			<span class="glyphicon gi-5x"
-				ng-class="{ 'glyphicon-refresh glyphicon-spin-animate': (workLoadingStatus.status==='LOADING'), 'glyphicon-time glyphicon-blink-animate': (workLoadingStatus.status==='WAITING'), 'glyphicon-exclamation-sign': (workLoadingStatus.status==='ERROR') }"
+			ng-class="{ 'glyphicon-refresh glyphicon-spin-animate': (workLoadingStatus.status==='LOADING'), 'glyphicon-time glyphicon-blink-animate': (workLoadingStatus.status==='WAITING'), 'glyphicon-exclamation-sign': (workLoadingStatus.status==='ERROR') }"
 			></span>
 		</div>
 		<div class="board-panel-status-text text-center"
-			ng-class="{ 'text-primary': (workLoadingStatus.status==='LOADING' || workLoadingStatus.status==='WAITING'), 'text-danger': (workLoadingStatus.status==='ERROR') }">
-			{{ workLoadingStatus.message }}
-		</div>
+		ng-class="{ 'text-primary': (workLoadingStatus.status==='LOADING' || workLoadingStatus.status==='WAITING'), 'text-danger': (workLoadingStatus.status==='ERROR') }">
+		{{ workLoadingStatus.message }}
 	</div>
+</div>
 
 
-	<!-- Grid plus prev/next buttons and progress bar -->
-	<div class="col-xs-12  text-center" ng-if="workLoadingStatus.status==='DONE'">
-		<div class="board-panel-grid-buttons">
-			<!-- grid -->
-			<board-grid board="iter.board"></board-grid>
+<!-- Grid plus prev/next buttons and progress bar -->
+<div class="col-xs-12  text-center" ng-if="workLoadingStatus.status==='DONE'">
+	<div class="board-panel-grid-buttons">
+		<!-- grid -->
+		<board-grid board="iter.board"></board-grid>
 
-			<!-- buttons -->
-			<div>
-				<div class="btn btn-sm btn-primary pull-left" ng-click="prevIter()"><span class="glyphicon glyphicon-chevron-left"></span></div>
-				<div class="btn btn-sm btn-primary pull-right" ng-click="nextIter()"><span class="glyphicon glyphicon-chevron-right"></span></div>
-				<div class="btn btn-sm btn-primary pull-right" ng-click="play()"><span class="glyphicon glyphicon-play"></span></div>
-
-				<div class="progress board-progressbar">
-					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ iterPct() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ iterPct() }}%;">
-						<span class="sr-only">Iteration #{{ iter.iteration_number }}</span>
-					</div>
-				</div>
+		<!-- buttons -->
+		<div class="board-buttons">
+			<div class="btn btn-lg btn-primary board-button" ng-click="prevIter()"><span class="glyphicon glyphicon-chevron-left"></span></div>
+			<div class="board-progressbar">
+				<i class="fa fa-lg fa-circle-o board-progressbar-inner" ng-class="{ 'board-progressbar-inner-on': $index<=iterBin(10) }" ng-repeat="i in range(10) track by $index"></i>
 			</div>
-
+			<div class="btn btn-lg btn-primary board-button" ng-click="play()"><span class="glyphicon glyphicon-play"></span></div>
+			<div class="btn btn-lg btn-primary board-button" ng-click="nextIter()"><span class="glyphicon glyphicon-chevron-right"></span></div>
 		</div>
+
 	</div>
+</div>
 
-
-
-	<!-- The charts -->
-	<div class="col-xs-12 col-md-4 col-md-offset-4 text-center" ng-if="iterationsReady()">
-		<canvas id="iterationsChart" class="chart chart-line pull-right" 
-				data="chart.dataSeries" 
-				labels="chart.labels" 
-				series="chart.series"
-				options="chart.options"
-				colours="chart.colors"
-				legend="true"
-				height="220em"
-				></canvas>      
-	</div>
+<!-- The charts -->
+<div class="col-xs-12 col-md-4 col-md-offset-4 text-center" ng-if="iterationsReady()">
+	<canvas id="iterationsChart" class="chart chart-line pull-right" 
+	data="chart.dataSeries" 
+	labels="chart.labels" 
+	series="chart.series"
+	options="chart.options"
+	colours="chart.colors"
+	legend="true"
+	height="220em"
+	></canvas>      
+</div>
 
 
 </div>

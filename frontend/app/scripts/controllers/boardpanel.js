@@ -26,7 +26,7 @@ angular.module('griddlersApp')
 			colors: [ '#FF4444', '#44FF44', '#4444FF' ]
 		};
 
-		var iterations = null;
+		$scope.iterations = null;
 		var currentIter = 0;
 		var playPromise;
 
@@ -35,36 +35,37 @@ angular.module('griddlersApp')
 
 
 		$scope.nextIter = function() { 
-			currentIter = Math.min(iterations.length - 1, currentIter + 1);
-			$scope.iter = iterations[currentIter];
+			currentIter = Math.min($scope.iterations.length - 1, currentIter + 1);
+			$scope.iter = $scope.iterations[currentIter];
 		};
 		$scope.prevIter = function() { 
 			currentIter = Math.max(0, currentIter - 1);
-			$scope.iter = iterations[currentIter];
+			$scope.iter = $scope.iterations[currentIter];
 		};
 		$scope.play = function() { 
 			playPromise = $interval(function() { 
 				$scope.nextIter();
-				if (currentIter+1 >= iterations.length) { 
+				if (currentIter+1 >= $scope.iterations.length) { 
 					$interval.cancel(playPromise);
 				}
 			}, 500);
 		};
 
-		$scope.iterPct = function() { 
-			if (!iterations) { return 0; }
-			return (100 * (currentIter + 1) / iterations.length).toFixed(0);
-		};
+		$scope.iterBin = function(num_bins) { 
+			if (!$scope.iterations) { return 0; }
+			var pct = (currentIter + 1)/$scope.iterations.length;
+			return Math.round(pct*num_bins)-1;
+		}
 
 		$scope.iterationsReady = function() { 
-			return (iterations !== null && iterations.length > 0);
+			return ($scope.iterations !== null && $scope.iterations.length > 0);
 		};
 
 
 		function setIterations(iters) {
-			iterations = iters;
+			$scope.iterations = iters;
 			currentIter = 0;
-			$scope.iter = iterations[currentIter];
+			$scope.iter = $scope.iterations[currentIter];
 
 			$scope.chart.dataSeries = [ 
 				iters.map(function(iter) { return iter.stats.pct_certain.toFixed(2); }),
@@ -74,7 +75,7 @@ angular.module('griddlersApp')
 		};
 
 		function setWorkId(workId) { 
-			iterations = null;
+			$scope.iterations = null;
 			$scope.workLoadingStatus = { status: 'LOADING', message: 'Loading your board processing request' };
 
 			BoardService.waitForWork(workId, function(statusUpdate) { 
@@ -97,5 +98,10 @@ angular.module('griddlersApp')
 			});
 		};
 
+		$scope.range = function(num) { 
+			return new Array(num);
+		}
+
 			
 	});
+		
