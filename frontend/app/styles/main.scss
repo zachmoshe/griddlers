@@ -33,6 +33,10 @@ body {
 	}
 }
 
+.header a { 
+	text-decoration: none;
+}
+
 /* Custom page footer */
 .footer {
 	padding-top: 19px;
@@ -217,7 +221,7 @@ body {
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	line-height: 100%;
-  margin-right: 1em;
+	margin-right: 1em;
 }
 
 .link-item {
@@ -232,10 +236,21 @@ body {
 h1.main-title { 
 	text-align: center;
 	color: rgb(255, 107, 0);
-	text-shadow: 0px 0px 0px black, 0px 0px 5px black;
+	text-shadow: 0px 0px 1px white, 0px 0px 2px white
 }
 h2.main-title { 
 	text-align: justify;
 	color: white;
 	text-shadow: 0px 0px 0px black, 0px 0px 5px black;
+}
+article { 
+	color: white;
+	text-shadow: 0px 0px 0px black;
+	padding: 0.5em 2em 0.5em 2em;
+	border-radius: 0.5em;
+	background-color: rgba(0,0,0,0.5);	
+}
+p { 
+	font-size: 1.5em;
+	text-align: justify;
 }
