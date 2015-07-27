@@ -32,6 +32,29 @@ angular.module('griddlersApp')
 		var currentIter = 0;
 		var playPromise;
 
+		function setWorkId(workId) { 
+			$scope.iterations = null;
+			$scope.workLoadingStatus = { status: 'LOADING', message: 'Loading your board processing request' };
+
+			BoardService.waitForWork(workId, function(statusUpdate) { 
+				$scope.$evalAsync(function() { 
+					if (statusUpdate === 'WAITING') { 
+						$scope.workLoadingStatus = { status: 'WAITING', message: 'Waiting for an available worker to solve your board' };
+					}
+				});
+			})
+			.then(function(data) { 
+				$scope.$evalAsync(function() { 
+					$scope.workLoadingStatus = { status: 'DONE' };
+					setIterations(data);
+				});
+			})
+			.catch(function(err) { 
+				$scope.$evalAsync(function() { 
+					$scope.workLoadingStatus = { status: 'ERROR', message: err };
+				});
+			});
+		}
 		setWorkId($routeParams.id);
 
 
@@ -57,7 +80,7 @@ angular.module('griddlersApp')
 			if (!$scope.iterations) { return 0; }
 			var pct = (currentIter + 1)/$scope.iterations.length;
 			return Math.round(pct*num_bins)-1;
-		}
+		};
 
 		$scope.iterationsReady = function() { 
 			return ($scope.iterations !== null && $scope.iterations.length > 0);
@@ -74,35 +97,11 @@ angular.module('griddlersApp')
 				iters.map(function(iter) { return iter.stats.avg_change.toFixed(2); }),
 			];
 			$scope.chart.labels = iters.map(function(iter) { return 'Iter #' + iter.iteration_number; });
-		};
-
-		function setWorkId(workId) { 
-			$scope.iterations = null;
-			$scope.workLoadingStatus = { status: 'LOADING', message: 'Loading your board processing request' };
-
-			BoardService.waitForWork(workId, function(statusUpdate) { 
-				$scope.$evalAsync(function() { 
-					if (statusUpdate === 'WAITING') { 
-						$scope.workLoadingStatus = { status: 'WAITING', message: 'Waiting for an available worker to solve your board' };
-					}
-				});
-			})
-			.then(function(data) { 
-				$scope.$evalAsync(function() { 
-					$scope.workLoadingStatus = { status: 'DONE' };
-					setIterations(data);
-				});
-			})
-			.catch(function(err) { 
-				$scope.$evalAsync(function() { 
-					$scope.workLoadingStatus = { status: 'ERROR', message: err };
-				});
-			});
-		};
+		}
 
 		$scope.range = function(num) { 
 			return new Array(num);
-		}
+		};
 
 			
 	});

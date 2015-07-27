@@ -1,6 +1,6 @@
 'use strict';
 
-/*globals AWS */
+/*globals AWS, CryptoJS */
 
 
 /**
@@ -10,7 +10,7 @@
  * # boardsarchive
  * Service in the griddlersApp.
  */
- var ARCHIVE_PREFIX = "/griddlers_archive"
+ var ARCHIVE_PREFIX = "/griddlers_archive";
 
  angular.module('griddlersApp')
  .service('BoardsArchiveService', function ($http) {
@@ -45,7 +45,7 @@
 					Bucket: s3Bucket,
 					Key: s3Key,
 					Body: JSON.stringify(strategy) + "\n" + JSON.stringify(requestParams) + "\n" + JSON.stringify(board)
-				}).then(function(s3Resp) { 
+				}).then(function() { 
 					return { s3Location: { Bucket: s3Bucket, Key: s3Key }, workId: workId };
 				});
 			})

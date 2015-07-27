@@ -88,7 +88,28 @@ body {
 	}
 }
 
-
+h1 { 
+	text-align: center;
+	color: $orange;
+	text-shadow: 0px 0px 1px white, 0px 0px 2px white
+}
+h2 { 
+	text-align: left;
+	color: white;
+	text-shadow: 0px 0px 0px black, 0px 0px 5px black;
+}
+article { 
+	color: white;
+	text-shadow: 0px 0px 0px black;
+	padding: 0.5em 2em 0.5em 2em;
+	border-radius: 0.5em;
+	background-color: rgba(0,0,0,0.5);	
+	margin-bottom: 2em;
+}
+p { 
+	font-size: 1.5em;
+	text-align: justify;
+}
 
 /* Glyphicons sizes */
 .gi-2x{font-size: 2em;}
@@ -234,25 +255,63 @@ body {
 .main-title { 
 	margin-top: 0px;
 }
-h1 { 
+
+.main-panel *[class^="col-"] { 
+	padding-right: 0.25em;
+	padding-left: 0.25em;
+}
+
+.main-component { 
+	border: 2px solid $orange;
+	background-color: white;
 	text-align: center;
+	vertical-align: middle;
+	margin-bottom: 0.5em;
 	color: $orange;
-	text-shadow: 0px 0px 1px white, 0px 0px 2px white
+	padding: 1em;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	-webkit-justify-content: space-around;
+	justify-content: space-around;	
 }
-h2 { 
-	text-align: left;
-	color: white;
-	text-shadow: 0px 0px 0px black, 0px 0px 5px black;
+.main-component a { 
+	text-decoration: none;
+	color: $orange;
 }
-article { 
-	color: white;
-	text-shadow: 0px 0px 0px black;
-	padding: 0.5em 2em 0.5em 2em;
-	border-radius: 0.5em;
-	background-color: rgba(0,0,0,0.5);	
-	margin-bottom: 2em;
+.main-component a:hover{ 
+//	color: #337ab7;
 }
-p { 
-	font-size: 1.5em;
-	text-align: justify;
+.main-component i { 
+	font-size: 3em;
+	display: block;
 }
+.main-component * { 
+	font-size: 2em;
+}
+.main-component img { 
+	max-width: 100%;
+	max-height: 100%;
+
+	display: block;
+}
+
+.main-component-small-text { 
+	font-size: 0.65em;
+}
+.main-component-extrathin { 
+	height: 6em;
+}
+.main-component-thin { 
+	height: 12em;
+}
+.main-component-thick { 
+	height: 18em;
+}
+
+
+
+
+
+

@@ -1,8 +1,52 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h1 class="main-title">Griddlers Ninja!</h1>
-    <h2 class="main-title">
-      Griddlers-Ninja is a (beta) website that automatically solves Griddlers puzzles. There is no commercial intention behind it, I started it because I thought it would be nice to visualize the probability for a black cell after every iteration of the 'naive' algorithm
-    </h2>
-  </div>
+<div class="row main-panel">
+	<div class="col-md-2 col-md-offset-1">
+		<div class="main-component">
+			<a href="/#/archive">
+				<i class="fa fa-archive fa-4x"></i>
+				Click here to try some of the archived boards!
+			</a>
+		</div>
+		<div class="main-component main-component-small-text">
+			<span>
+				<i class="fa fa-eye fa-2x"></i>
+				Click on any of the latest boards to visualize the process
+			</span>
+		</div>
+	</div>
+
+	<div class="col-md-2">
+		<div class="main-component">
+			<board-svg board="{{randomBoards[0].board}}" workid="{{randomBoards[0].workId}}"></board-svg>
+		</div>
+		<div class="main-component">
+			<board-svg board="{{randomBoards[1].board}}" workid="{{randomBoards[1].workId}}"></board-svg>
+		</div>
+		<div class="main-component">
+			<board-svg board="{{randomBoards[2].board}}" workid="{{randomBoards[2].workId}}"></board-svg>
+		</div>
+	</div>
+
+	<div class="col-md-2 col-md-offset-2">
+		<div class="main-component-extrathin"></div>
+		<div class="main-component ">
+			<board-svg board="{{randomBoards[3].board}}" workid="{{randomBoards[3].workId}}"></board-svg>
+		</div>
+		<div class="main-component ">
+			<board-svg board="{{randomBoards[4].board}}" workid="{{randomBoards[4].workId}}"></board-svg>
+		</div>
+	</div>
+
+	<div class="col-md-2">
+		<div class="main-component ">
+			<board-svg board="{{randomBoards[5].board}}" workid="{{randomBoards[5].workId}}"></board-svg>
+		</div>
+		<div class="main-component">
+			<a href="http://zachmoshe.com">
+				<img src="/images/server.png">
+				Read more about the new serverless architecture
+			</a>
+		</div>
+	</div>
+
+
 </div>
