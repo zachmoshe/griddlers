@@ -59,14 +59,18 @@ angular.module('griddlersApp')
 			
 		};
 
-
+		var _randomBoards = null;
 		this.getRandomBoards = function(numBoards) { 
+			if (_randomBoards) { 
+				return Promise.resolve(_randomBoards);
+			}
+
+			var that = this;
 			return S3.listObjectsAsync({ 
 				Bucket: window.griddlersConfig.s3WorkBucket
 			})
 			.then(function(resp) { 
-				var files = resp.Contents;
-				return files
+				var workIds = resp.Contents
 				.filter(function(file) { 
 					return file.Size > 200 && file.Key.endsWith('/response');
 				})
@@ -74,6 +78,17 @@ angular.module('griddlersApp')
 					return file.Key.split('/')[0];
 				})
 				.slice(0,numBoards);
+
+				return Promise.all(workIds.map(function(workId) { 
+					return that.waitForWork(workId, function(){})
+					.then(function(iterations) { 
+						return { board: iterations.slice(-1)[0].board, workId: workId };
+					});
+				}))
+				.then(function(randomBoards) { 
+					_randomBoards = randomBoards;
+					return randomBoards;
+				});
 			});
 		};
 
