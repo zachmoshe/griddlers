@@ -8,7 +8,7 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<!-- build:css(.) styles/vendor.css -->
 	<!-- bower:css -->
-	<link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
+	<link rel='stylesheet' href='bower_components/angular-chart.js/dist/angular-chart.css' />
 	<!-- endbower -->
 	<!-- endbuild -->
 	<!-- build:css(.tmp) styles/main.css -->
@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="styles/boardgrid.css">
 	<link rel="stylesheet" href="styles/boardsarchive.css">
 	<!-- endbuild -->
-	<link rel="stylesheet" href="styles/font-awesome-4.3.0.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Shojumaru&subset=latin,latin-ext'>
 	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Roboto:500,400'>
 </head>
@@ -100,7 +100,6 @@
 	  <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
 	  <script src="bower_components/aws-sdk/dist/aws-sdk.js"></script>
 	  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-	  <script src="bower_components/cryptojslib/rollups/sha256.js"></script>
 	  <script src="bower_components/bluebird/js/browser/bluebird.js"></script>
 	  <!-- endbower -->
 	  <!-- endbuild -->
@@ -108,6 +107,7 @@
 	  <!-- build:js({.tmp,app}) scripts/scripts.js -->
 	  <script src="scripts/config.js"></script>
 	  <script src="scripts/app.js"></script>
+	  <script src="scripts/components/sha256.js"></script>
 	  <script src="scripts/controllers/main.js"></script>
 	  <script src="scripts/controllers/boardpanel.js"></script>
 	  <script src="scripts/controllers/boardsarchive.js"></script>
@@ -115,7 +115,7 @@
 	  <script src="scripts/services/board.js"></script>
 	  <script src="scripts/services/boardsarchive.js"></script>
 	  <script src="scripts/directives/boardgrid.js"></script>
-<script src="scripts/directives/board-svg.js"></script>
+	  <script src="scripts/directives/board-svg.js"></script>
 	  <!-- endbuild -->
 	</body>
 	</html>
