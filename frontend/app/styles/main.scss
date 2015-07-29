@@ -289,18 +289,18 @@ body {
 	font-size: 3em;
 	display: block;
 }
-.main-component * { 
+.main-component span { 
 	font-size: 2em;
 }
 .main-component img { 
 	max-width: 100%;
 	max-height: 100%;
-
+	margin: auto;
 	display: block;
 }
 
 .main-component-small-text { 
-	font-size: 0.65em;
+	font-size: 0.75em;
 }
 .main-component-extrathin { 
 	height: 6em;
@@ -318,8 +318,6 @@ body {
 	display: flex;
 	margin: auto;
 }
-
-
 
 
 

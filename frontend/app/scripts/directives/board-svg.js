@@ -17,9 +17,14 @@
 			workid: '@'
 		},
 		controller: function($scope) { 
+			$scope.status = "LOADING";
 
 			$scope.$watch('board', function(val) { 
 				if (!val || val === "") { return; }
+				if (val === "NO_BOARD" ) { 
+					$scope.status = "NO_BOARD";
+					return;
+				}
 
 				var board = JSON.parse(val);
 
@@ -57,7 +62,7 @@
 					}
 				}
 				$scope.cells = cells;
-
+				$scope.status = "DONE";
 			});
 
 		},

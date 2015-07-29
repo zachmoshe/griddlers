@@ -1,4 +1,18 @@
-<a href="/#/board/{{ workid }}">
+<div ng-show="status==='LOADING'">
+	<i class="fa fa-spinner fa-pulse"></i>
+	<span>
+		Loading a random solved board...
+	</span>
+</div>
+
+<div ng-show="status==='NO_BOARD'">
+	<i class="fa fa-frown-o"></i>
+	<span>
+		Couldn't find any board... <a href="/#/archive" style="color: #0081FF;">Submit one!</a>
+	</span>
+</div>
+
+<a href="/#/board/{{ workid }}" ng-show="status==='DONE'">
 	<svg class="board-svg">
 		<!-- grid -->
 		<line ng-repeat="line in horizontalLines.concat(verticalLines)" 
@@ -10,3 +24,4 @@
 			ng-attr-x="{{ c.x }}" ng-attr-y="{{ c.y }}" ng-attr-width="{{ c.width }}" ng-attr-height="{{ c.height }}" fill="{{ c.fill }}"/>
 	</svg>
 </a>
+</div>

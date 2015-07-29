@@ -78,6 +78,7 @@ module.exports = function (grunt) {
       livereload: {
         options: {
           open: true,
+
           middleware: function (connect) {
             return [
               connect.static('.tmp'),
@@ -258,8 +259,8 @@ module.exports = function (grunt) {
         flow: {
           html: {
             steps: {
-              js: ['concat', 'uglifyjs'],
-              css: ['cssmin']
+              js: ['concat'] , //, 'uglifyjs'],
+              css: ['concat'] // 'cssmin'
             },
             post: {}
           }
@@ -397,7 +398,7 @@ module.exports = function (grunt) {
             'images/{,*/}*.{webp}',
             'styles/fonts/{,*/}*.*',
 	    'griddlers_archive/*',
-	    'views/*'
+	    'views/**'
           ]
         }, {
           expand: true,
@@ -475,6 +476,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'copy',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -484,11 +486,11 @@ module.exports = function (grunt) {
     'ngAnnotate',
     'copy:dist',
     'cdnify',
-    'cssmin',
-    'uglify',
+    // 'cssmin',
+    // 'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    //'htmlmin'
   ]);
 
   grunt.registerTask('default', [
