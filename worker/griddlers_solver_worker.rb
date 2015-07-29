@@ -85,7 +85,6 @@ class GriddlersSolverWorker
 		begin
 			status = Open4::popen4("#{core_path}/env/bin/python #{core_path}/bin/board_solver.py") do |pid, stdin, stdout, stderr|
 				logger.info "Starting board_solver.py for request #{work_id} [PID=#{pid}]"
-				sleep(10)
 
 				stdin.puts(strategy)
 				stdin.puts(request_params)
