@@ -6,13 +6,15 @@
 		<p>Choose algorithm:</p>
 		<div class="radio">
 			<label>
-				<input type="radio" ng-model="strategy.name" value="naive">
+				<input type="radio" ng-model="strategy.name" value="naive"
+					analytics-on="click" analytics-event="Click" analytics-category="SubmitBoardAlgorithmChoose" analytics-label="naive">
 				Naive
 			</label>
 		</div>
 		<div class="radio">
 			<label>
-				<input type="radio" ng-model="strategy.name" value="naive-probs" checked>
+				<input type="radio" ng-model="strategy.name" value="naive-probs" checked
+					analytics-on="click" analytics-event="Click" analytics-category="SubmitBoardAlgorithmChoose" analytics-label="naive-probs">
 				Naive Probs
 			</label>
 		</div>
@@ -20,14 +22,21 @@
 		<p>Strategy options:</p>
 		<div class="checkbox">
 			<label>
-				<input type="checkbox" ng-model="strategy.speedy">
+				<input type="checkbox" ng-model="strategy.speedy"
+					analytics-on="click" analytics-event="Click" analytics-category="SubmitBoardAlgorithmChoose" analytics-label="speedy">
 				Speedy?
 			</label>
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button class="btn btn-primary" ng-click="submit()">Submit</button>
-		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+		<button class="btn btn-primary" ng-click="submit()"
+			analytics-on="click" analytics-event="Click" analytics-category="SubmitBoard" analytics-label="submit">
+			Submit
+		</button>
+		<button class="btn btn-warning" ng-click="cancel()" 
+			analytics-on="click" analytics-event="Click" analytics-category="SubmitBoard" analytics-label="cancel">
+			Cancel
+		</button>
 	</div>
 </script>
 
@@ -56,6 +65,7 @@
 			<img class="archive-image" 
 				ng-attr-src="{{ board.svg }}" 
 				ng-click="openSubmitWindow(board)"
+				analytics-on="click" analytics-event="Click" analytics-category="ArchivedBoard" analytics-label="{{ board.name }}"
 				ng-if="currentlySubmitting !== board.name"></img>
 
 			<div class="archive-loading-icon archive-image"
