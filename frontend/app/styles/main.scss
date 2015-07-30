@@ -148,6 +148,17 @@ html {
 	min-height:100%;
 	background-size:cover;
 }
+.background-credit { 
+	position: absolute;
+	bottom: 0.5em;
+	right: 1em;
+	color: white;
+	text-shadow: 0px 0px 2px black;
+}
+.background-credit a { 
+	text-shadow: 0px 0px 1px white, 0px 0px 2px white;
+	font-weight: bolder;
+}
 body { 
 	min-height: 100%;
 	background-color: transparent;
@@ -283,7 +294,7 @@ body {
 	color: $orange;
 }
 .main-component a:hover{ 
-//	color: #337ab7;
+	//	color: #337ab7;
 }
 .main-component i { 
 	font-size: 3em;
